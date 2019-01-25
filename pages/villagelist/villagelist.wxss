@@ -1,0 +1,133 @@
+page {
+  font-family: '微软雅黑';
+  font-size: 28rpx;
+  padding: 0;
+}
+p {
+  margin: 0 0 20rpx;
+}
+.tabbar-border{
+  width:100%;
+  height:2rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: #ccc;
+}
+.village_banner{
+  position: relative;
+  overflow: hidden;
+  margin:10rpx 20rpx;
+}
+swiper {
+  height:400rpx;
+}
+.slide-image {
+  width:100%;
+  height:400rpx;
+  border-radius:15rpx;
+}
+.swiper-box .wx-swiper-dot{
+  width:17rpx;
+  display: inline-flex;
+  height: 17rpx;
+  justify-content:space-between;
+  position:relative;
+  right:-280rpx;
+}
+.swiper-box .wx-swiper-dot::before{
+  content: '';
+  flex-grow: 1; 
+  background: rgba(255,255,255,0.8);
+  border-radius: 8rpx;
+}
+.swiper-box .wx-swiper-dot-active::before{
+  background:#75706c;  
+}
+.village_banner_tit{
+  position:absolute;
+  z-index:101;
+  top:50rpx;
+  left:0;
+  color:#fff;
+  padding:4rpx 12rpx;
+  background-color:#933130;
+}
+.village_banner_tit text{
+  font-size:24rpx;
+  display:block;
+  letter-spacing:1px;
+}
+.village_rm{
+  position: relative;
+  overflow: hidden;
+  margin:40rpx 0 80rpx 20rpx;
+}
+.itemname{
+  padding: 15rpx 0;
+}
+.itemname text{
+  font-size:28rpx;
+  display:block;
+  letter-spacing:2rpx;
+}
+/* .content{
+  height:340rpx;
+} */
+.inner {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  margin-right:30rpx;
+}
+.movie-item image{
+  height:230rpx;
+  width:400rpx;
+  display:block;
+  border-radius:10rpx;
+}
+.movie-item .title{
+  display:block;
+  letter-spacing:2rpx;
+  padding:15rpx 0;
+  font-size:28rpx;
+}
+.village_inner_img image{
+  width: 26rpx;
+  height: 32rpx;
+  display:inline-block;
+}
+.village_inner_img span{
+  font-size:24rpx;
+  position:relative;
+  top:-5rpx;
+  padding-left:12rpx;
+  letter-spacing:2rpx;
+}
+.provider_item {
+  position:relative;
+  margin-bottom:40rpx;
+}
+.bgimg {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height: 420rpx;
+  border-radius:20rpx;
+}
+.provider_item_info {
+  background-color: #fff;
+  width: 100%;
+}
+.provider_item_info .provider_item_name_addr text {
+  font-size:28rpx;
+  padding:15rpx 0;
+  display:block;
+  letter-spacing:2rpx;
+}
+.provider_item_info .village_inner_img span {
+    color: #b5b5b6;   
+}

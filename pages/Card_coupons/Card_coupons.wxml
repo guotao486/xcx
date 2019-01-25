@@ -1,0 +1,32 @@
+<import src="../../modal/modal.wxml" />
+
+<template is="modal" data="{{showModal}}"></template>
+<form bindsubmit="submitForm" report-submit >
+<!--申请卡券-->
+<view class='content'>
+   <view class='post'>
+     <image src='../../resources/images/d_01.png' mode="widthFix"/>
+     <text>申请卡券</text>
+   </view>
+   <view class='bgm'>
+      <view class='djj'>
+        <image src='../../resources/images/kq.png' mode="widthFix"/>
+      </view>
+      <view class='form'>
+         <input class="input" maxlength='10' name="data_name" placeholder="请输入联系人姓名" />
+      </view>
+      <view class='form'>
+         <input class="input" maxlength='11' name="data_phone" placeholder="请输入联系人手机号" />
+      </view>
+      <view class='form'>
+        <picker mode="date" value="{{data_date}}" start="{{info.start_time_text}}" end="{{info.end_time_text}}" bindchange="datePickerBindchange">
+          <text class="inputs" >{{data_date_tip}}</text>
+        </picker>
+      </view>
+      <view class='form'>
+         <button class="btn"  form-type="submit" >立即申请</button>
+      </view>
+   </view>
+</view>
+
+</form>

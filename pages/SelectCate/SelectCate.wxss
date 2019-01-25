@@ -1,0 +1,126 @@
+/* pages/SelectCate/SelectCate.wxss */
+page{
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑 Regular","微软雅黑";
+    background: #F0F0F0;
+    color: #3F3F3F;
+}
+.content {
+    width: 100%;
+    padding-bottom: 100rpx;
+}
+.contenter {
+    margin: 0 auto;
+}
+.lump {
+    border-top: 1px solid #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+    width:100%;
+    background: #fff;
+    padding: 30rpx 0;
+}
+.font13 {
+    font-size: 24rpx;
+    color: #656565;
+    text-indent: 10px;
+}
+.font12 {
+    font-size: 24rpx;
+    color: #656565;
+}
+p {
+    display:block;
+    margin: 20rpx 0;
+    white-space: normal;
+}
+.way {
+    margin: 20rpx 0;
+    background: #fff;
+    padding: 20rpx;
+    font-size: 24rpx;
+}
+.way .title {
+    border-bottom: 1px dashed #C0A0A0;
+    padding-bottom: 20rpx;
+    font-size: 34rpx;
+    display:block;
+}
+.checkboxs {
+    color: #f60;
+    background: #DBDBDB;
+}
+.ticket {
+    position: relative;
+    padding: 0;
+    margin-bottom: 40rpx;
+    display:inline-block;
+}
+.clearfix {
+    clear: both;
+    zoom: 1;
+}
+.ticket .left {
+    padding: 10rpx 0 10rpx 20rpx;
+}
+.left {
+    float: left;
+}
+.ticket .left image {
+    width: 44rpx;
+    height: 44rpx;
+}
+text{
+  display: block
+}
+.ticket .left text {
+    margin-left:20rpx;
+    padding: 5rpx 0;
+    line-height:40rpx;
+}
+.ticket-side{
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 240rpx;
+}
+.money {
+    text-align: right;
+    font-size: 40rpx;
+    color: #FF6600;
+    display: block;
+    padding-right: 20rpx;
+}
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 1000;
+    border-top: 1px solid #D8D8D8;
+}
+.costbox {
+    font-size: 32rpx;
+    line-height: 80rpx;
+    padding: 0 10rpx;
+    display: block;
+}
+.cost {
+    color: #f60;
+}
+.btn {
+    background: #f60;
+    border-radius: 10rpx;
+    float: right;
+    display: block;
+    color: #fff;
+    line-height: 50rpx;
+    padding: 10rpx 20rpx;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 28rpx;
+}
+navigator {
+    display: initial;
+}

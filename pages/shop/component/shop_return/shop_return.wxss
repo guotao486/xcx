@@ -1,0 +1,107 @@
+/* pages/shop/component/shop_return/shop_return.wxss */
+.content{
+  position: relative;
+  overflow: hidden;
+  padding: 30rpx 28rpx;
+  border-bottom: 10rpx solid #f5f5f5
+}
+.o-t-item {
+    display:-webkit-box;
+}
+.item-img{
+    width: 140rpx;
+    height: 140rpx;
+    margin-right:22rpx;
+}
+.item-img image{
+    width: 140rpx;
+    height: 140rpx;
+}
+.item-info {
+    -webkit-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    color: #666
+}
+.item-info .title{
+  font-size: 24rpx;
+}
+.nums{
+  font-size: 24rpx;
+  padding:5rpx 0;
+  display: block;
+}
+.price{
+  font-size: 24rpx;
+  display: block;
+  color: #ff1623;
+}
+.return_money{
+  position: relative;
+  overflow: hidden;
+  padding: 30rpx 28rpx;
+  border-bottom: 2rpx solid #dbdbdb;
+  color: #7e7e7e
+}
+.return_money p{
+  float: right;
+  color: #ff1822
+}
+.return_y{
+  position: relative;
+  overflow: hidden;
+  padding: 30rpx 28rpx;
+  border-bottom: 8rpx solid #f5f5f5;
+  color: #7e7e7e
+}
+.return_y p{
+  float: right;
+}
+.fb_component {
+  padding: 30rpx 28rpx;
+}
+.fbc_title{
+    color: #7e7e7e
+}
+.fbc_content {
+    margin-top: 20rpx;
+    width: 100%
+}
+.texts{
+  width:100%;
+  padding:16rpx 10rpx;
+  border:1px solid #D3D3D3;
+  box-sizing:border-box;
+  display:block;
+  color: #7e7e7e
+}
+.return_textarea{
+  border:#ccc solid 1px;
+  color:#666;
+  border-radius:6rpx;
+  width:100%;
+  margin-top:10rpx;
+  text-indent:24rpx;
+  padding:10rpx 0;
+  letter-spacing:2rpx;
+}
+.fbc_required {
+  margin-left: 5px;
+  color: #DA2824;
+  position: relative;
+  top: 6rpx;
+}
+.fotter{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+}
+.fotter button{
+  background-color: #e1455e;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 0px;
+  padding-left:0px;
+  padding-right:0px;
+  line-height: 80rpx;
+}

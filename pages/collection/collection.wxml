@@ -1,0 +1,44 @@
+<section class="account_index my_project account_mod">
+<block wx:if="{{home_collection!='暂无数据'}}">
+    <ul>
+    <block wx:for="{{home_collection}}" wx:for-item="item">
+	    <li>
+        <view class="webkit-box">
+        <navigator url="../home_detail/home_detail?home_id={{item.obj_id}}">
+            <view class="pic_show mr5">
+                <image src="{{item.pic_url}}" width="100%" height="100%"/>
+            </view>
+         </navigator>
+            <view class="details">
+         <navigator url="../home_detail/home_detail?home_id={{item.obj_id}}">
+                <text class="info_name">
+                  {{item.s_title}}
+                </text>
+                <view class="info_all">
+                    <view class="info_group">
+                        <label class="label_l">金额: </label>
+                        <span class="f_money">{{item.price}}</span>
+                    </view>
+                    <view class="info_group">
+                        <label class="label_l">简介: </label>
+                        <span class="label_r">{{item.s_desc}}</span>
+                    </view>
+                </view>
+         </navigator>
+            </view>             
+        </view>
+            <view class="blank5"></view>
+            <view class="operating f_r" bindtap="cancel_collection" data-id="{{item.obj_id}}">
+              	<a href="#" class="pay theme_color">取消收藏</a> 
+            </view>
+        </li>    
+    </block>  
+	    </ul>
+      </block>
+<block wx:if="{{home_collection=='暂无数据'}}">
+<view class="notify">
+ <image src="../../resources/images/shoucang.png" class="imgsss" />
+     {{home_collection}}
+  </view>
+</block>
+</section>

@@ -1,0 +1,19 @@
+<!-- <view class="cotact_view">
+  <contact-button  type="default-light"  size="27" session-from="weapp"></contact-button>
+</view> -->
+
+<view class="tops">
+  <image src="../../resources/images/kefu_02.png" class="images1"></image>
+  <text class="ts">联系客服</text>
+  <text class="ts1">Contact Customer Service</text>
+</view>
+
+<button open-type="contact" type="default-light" size="20" session-from="weapp">
+  <image src="../../resources/images/xx_08.png" class="images2"/>
+  <p>在线咨询</p>
+</button>
+
+<button class="btnsp" bindtap="phoneCall">
+  <image src="../../resources/images/xx1_10.png" class="images2"/>
+  <p>咨询电话</p>
+</button>

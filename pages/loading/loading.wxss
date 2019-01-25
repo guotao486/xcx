@@ -1,0 +1,23 @@
+/* pages/loading/loading.wxss */
+.contee image{
+  width:100%;
+  height:1000rpx;
+  display:block;
+}
+.imgbtn text{
+  padding:30rpx 0;
+  text-align:center;
+  display:block;
+  letter-spacing: 3rpx;
+}
+.btn{
+  font-size:28rpx;
+  padding-left:0px;
+  padding-right:0px;
+  background-color:#716b85;
+  width:44%;
+  color:#fff;
+  letter-spacing:4rpx;
+  border-radius:0 30rpx;
+  font-weight:700;
+}

@@ -1,0 +1,212 @@
+<import src="../../../../wxParse/wxParse.wxml" />
+<import src="../../../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+
+<scroll-view class="WrapTOP" scroll-y="true" scroll-top="{{scrollTop}}"   bindscroll="scroll" >
+  <view class="main">
+    <view class='goods-detail-top'>
+      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="800" circular="true" class='goods-det'>
+        <block wx:for="{{goods.img}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" />
+          </swiper-item>
+        </block> 
+      </swiper>
+    </view>
+    <view class="goods-box">
+      <view class="goods-detail-name"> 
+        <view class='goods-detail-left'>
+            <text>{{goods.sub_name}}</text>
+            <text class='by' wx:if="{{goods.promotion}}">{{goods.promotion}}</text>
+        </view>
+        <view class='goods-detail-right' bindtap="onChangeShowStates">
+            <image src='../../../../resources/images/share.png' class='share_img'/>
+            <text class='text'>分享</text>
+        </view>
+      </view>
+      <view class='goods-detail-price'>
+          <p>￥<em>{{goods.sell_price}}</em></p>
+          <!-- <p class='price-des'>降价通知</p> -->
+      </view>
+    </view>
+
+    <view class="goods-boxs">
+      <navigator url=''>
+          <view class="store-name">
+            <image src='../image/store_b.png'/>{{goods.seller}} 
+            <span class="icon-mall" wx:if="{{goods.seller_id == 1}}">自营店铺</span> 
+            <span class="icon-mall" wx:else>由{{goods.seller}}负责发货, 并提供售后服务</span>
+          </view>
+          <!-- <view class="store-rate"> 
+            <span class="equal">描述相符 <em>5</em> <i>平</i> </span> 
+            <span class="equal">服务态度 <em>5</em> <i>平</i> </span> 
+            <span class="equal">发货速度 <em>5</em> <i>平</i> </span> 
+          </view> -->
+      </navigator>
+    </view>
+
+    <view class="goods-tab-box">
+      <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">详情</view>
+      <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindTap" data-index="1">参数</view>
+      <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindTap" data-index="2">评价</view>
+    </view>
+    <view class="goods-content">
+        <view wx:if="{{curIndex === 0}}">
+          <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+        </view>
+        <view wx:if="{{curIndex === 1}}">
+          <view class="goods-stock">名称：  {{goods.name}}</view>
+          <view class="goods-stock">毛重：  {{goods.weight}}g</view>
+          <view class="goods-stock">单位：  {{goods.unit}}</view>
+          <view class="goods-stock">上架时间：  {{goods.up_time}}</view>
+          <view class="goods-stock">价格：  {{goods.sell_price}}</view>
+          <view class="goods-stock">库存：  {{goods.store_nums}}</view>
+        </view>
+        <view wx:if="{{curIndex === 2}}">
+          <view class='good_pj'>
+              <view class="good_num{{commentType == 0 ?'':'s'}}">
+                <span class="good_num_span" bindtap="bindCtype" data-index="0">全部({{c_num}})</span>
+              </view>
+              <view class="good_num{{commentType == 1 ?'':'s'}}" >
+                <span class="good_num_span" bindtap="bindCtype" data-index="1">好评({{c_good}})</span>
+              </view>
+              <view class="good_num{{commentType == 2 ?'':'s'}}">
+                <span class="good_num_span" bindtap="bindCtype" data-index="2">中评({{c_medium}})</span>
+              </view>
+              <view class="good_num{{commentType == 3 ?'':'s'}}">
+                <span class="good_num_span" bindtap="bindCtype" data-index="3">差评({{c_bad}})</span>
+              </view>
+          </view>
+          <view class='comment-new'>
+            <block wx:for="{{comment}}">
+              <view class='wrap'>
+                <view class='public-comment-show clearfix'>
+                  <view class='pcs-left'>
+                    <image class='pcs-headimg' src='{{item.user.avatarurl}}'/>
+                  </view>
+                  <view class='pcs-right'>
+                    <view class='pcs-right-htop'>
+                        <a class='anickname'>{{item.user.nickname}} </a>
+                        <span class='spandate'>{{item.comment_time}}</span>
+                    </view>
+                    <text class='pmainContent'>{{item.contents}}</text>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+
+    <view class="goods-detail-foot"> 
+      <view class="otreh-handle"> 
+        <navigator class="kefu" url='../../../contact_kefu/contact_kefu'>
+          <image src="../image/kef.png" class='goods-detail-foot-img'></image> 
+          <p>客服</p>
+        </navigator> 
+        <navigator url="../cart/cart" class="cart">
+          <view class="carts-icon {{scaleCart?'on':''}}">
+            <image src="../image/shop.png" class='goods-detail-foot-img'></image>
+            <text class="carts-icon-num" wx:if="{{hasCarts}}">{{totalNum}}</text>
+            <p>购物车</p>
+          </view>
+      </navigator>
+      </view> 
+      <view class="buy-handle">
+        <button bindtap="onChangeShowState" id="1" class="animation-up add-cart">加入购物车</button> 
+        <navigator bindtap="onChangeShowState"  id="2" class="animation-up buy-now">立即购买</navigator> 
+      </view> 
+    </view>
+
+    <!-- 加入购物车 -->
+    <view class="{{showView?'hide':'show'}}">
+      <view class='cart-detail'>
+          <view class="mask"></view>
+          <view class='nctouch-bottom-mask-block {{aniStyle?"slideup":""}}'>
+            <view class='nctouch-bottom-mask-top'>
+              <div class="goods-pic">
+                <image src="{{goods.img[0]}}"/>
+              </div>
+              <dl class='goods-left'>
+                <dt>{{goods.sub_name}}</dt>
+                <dd class="goods-price">
+                  ￥<em>{{p_price}}</em>
+                  <span class="goods-storage">库存：{{p_store}}</span>
+                </dd>
+              </dl>
+              <a bindtap="onChangeShowState" class="nctouch-bottom-mask-close">
+                <image src='../image/close_window.png'></image>
+              </a>
+            </view>
+            <view class='nctouch-bottom-mask-rolling' wx:if="{{goods.spec_array !== ''}}">
+              <view class='goods-options-stock'>
+                <dl class="spec">
+                  <dt>规格：</dt>
+                  <dd >
+                    <block wx:for="{{goods.products}}">
+                    <a class="{{_num == index ? 'current':''}}" data-num="{{index}}" data-products="{{item.products_no}}" bindtap="click"> {{item.spec}}</a>
+                    </block>
+                  </dd>
+                </dl>
+              </view>
+            </view>
+            <view class="goods-option-value">购买数量
+              <view class="value-box">
+                <span class="minus">
+                  <a bindtap="minusCount">-</a>
+                </span>
+                <span>
+                  <input type="number" disabled="true" class="buy-num" value="{{num}}"/>
+                </span>
+                <span class="add">
+                  <a bindtap="addCount">+</a>
+                </span>
+              </view>
+            </view>
+            <view class="goods-detail-foot"> 
+              <view class="buy-handles"> 
+              <block wx:if="{{showType == 1}}">
+                <button bindtap="addToCart" class="animation-up buy-nows">确定</button> 
+              </block>
+              <block wx:else>
+                <navigator url="../orders/orders?gid={{goods.id}}&num={{num}}&products={{products}}" class="animation-up buy-nows">确定</navigator> 
+              </block>
+              </view> 
+            </view>
+          </view>
+        </view>
+    </view>
+
+    <!-- 微信分享 -->
+    <view class="{{showViews?'hide':'show'}}">
+      <view class='detail_share'>
+        <view class="mask" bindtap="onChangeShowStates"></view>
+        <view class='mask-block_share'>
+          <view class='mask-block_shareimg'>
+            <view class='vux-tab-item'>
+                <button class='share_btn' open-type="share" bindtap='onShareApp'>
+                  <image src='../image/weixin.png'/>
+                  <text>分享给朋友</text>
+                </button>
+            </view>
+            <view class='vux-tab-item'>
+                <navigator url='../details_share/details_share?id={{goods.id}}&type=goods'>
+                  <image src='../image/tuijian.png'/>
+                  <text>分享图片</text>
+                </navigator>
+            </view>
+          </view>
+          <button bindtap="onChangeShowStates" class='mask-block_share_btn'>关闭</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 返回顶部 -->
+  <view class="com-widget-goTop" bindtap="goTop" wx:if="{{floorstatus}}">
+    <view class="icon-gotop">
+        顶部
+    </view>
+  </view>
+  
+</scroll-view>

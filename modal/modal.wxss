@@ -1,0 +1,73 @@
+/* pages/modal/modal.wxss */
+/*弹出模态框  */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  width:90%;
+  overflow:hidden;
+  position:fixed;
+  top:32%;
+  left:0;
+  z-index:9999;
+  background:#f9f9f9;
+  margin:0rpx 38rpx;
+  border-radius:20rpx;
+}
+.modal-title {
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  color: #030303;
+  text-align: center;
+}
+.modal-content {
+  padding:30rpx;
+  color:#545454;
+  letter-spacing:1rpx;
+  line-height:50rpx;
+} 
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+}
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  position: relative;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 0;
+  font-size:26rpx;
+  line-height:86rpx;
+  letter-spacing:5rpx;
+}
+.btn-confirm {
+  width: 50%;
+  color: green;
+  text-align: center;
+  position: relative;
+  border: none;
+  font-size:26rpx;
+  line-height:86rpx;
+  letter-spacing:5rpx;
+}
+.laoding{
+  text-align:center;
+  line-height:50rpx;
+  color:#666666;
+  background:#f5f4f4;
+  padding-bottom:20rpx;
+  font-size:24rpx;
+}

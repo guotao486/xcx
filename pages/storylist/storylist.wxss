@@ -1,0 +1,209 @@
+/* pages/loterry/loterry.wxss */
+.scroll-container{
+    width:100%;
+}
+.tabbar-border{
+    width:100%;
+    height:1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #ccc;
+}
+.container{
+  margin: 0;
+  padding: 0;
+  font-family: '微软雅黑','宋体',sans-serif;
+  font-size: 28rpx;
+}
+.ss{
+  background: #f1f1f3;
+  width: 100%;
+  display: -webkit-box;
+  padding-bottom:10rpx;
+}
+.tm{
+  padding:25rpx  10rpx 25rpx 25rpx;
+}
+.dz{
+  width: 30rpx;
+  height: 40rpx;
+  position: relative;
+  top:5rpx;
+}
+.tm text{
+  width:84rpx;
+  display:inline-block;
+  margin-left:20rpx;
+  font-size: 24rpx;
+  line-height:24rpx;
+  letter-spacing:1rpx;
+}
+.ss .search_in-box{
+  position:absolute;
+  top:40rpx;
+  z-index:10;
+  margin-left:20rpx;
+  right:100rpx;
+}
+.input{
+  height:64rpx;
+  background-color:#fefefe;
+  width:62%;
+  border-radius:10rpx;
+  margin-top:25rpx;
+  font-size:24rpx;
+  line-height:64rpx;
+  padding-left:20rpx;
+  letter-spacing: 2rpx;
+  padding-right:20rpx;
+}
+.kefu{
+  padding:25rpx 15rpx 0 20rpx;
+}
+.kefu text{
+  display:block;
+  font-size:18rpx;
+}
+.kfbtn{
+  font-size:20rpx;
+  line-height:30rpx;
+  background:#f1f1f3;
+  padding:0;
+  letter-spacing:2rpx;
+}
+.kfbtn::after{
+  border:none;
+}
+.kf{
+  width:30rpx;
+  height:32rpx;
+}
+.home_classify{
+  position: relative;
+  overflow: hidden;
+  margin:3%;
+}
+.home_classify_texts{
+  margin-top:25rpx;
+  display:block;
+}
+.home_classify text{
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+}
+.home_classify_tab{
+  display:flex;
+  position:relative;
+  margin-top:25rpx;
+}
+.home_classify-tab-item{
+  position:relative;
+  overflow:hidden;
+  display:block;
+  flex:1;
+  width:100%;
+  height:100%;
+  font-size:24rpx;
+  box-shadow: 2rpx 2rpx 16rpx #cccccc;
+  margin:10rpx 0;
+  border-radius:10rpx;
+}
+.home_classify-tab-item:nth-child(2n){
+  margin: 10rpx 20rpx;
+}
+.home_classify-tab-item image{
+  width:100%;
+  height:170rpx;
+  display:block;
+}
+.home_classify-tab-item text{
+  padding:15rpx 15rpx 18px;
+  display:block;
+  font-size:28rpx;
+}
+.home_classify_stroy{
+  position: relative;
+  overflow: hidden;
+  margin: 10% 0
+}
+.home_classify_stroylist{
+  float: left;
+  position: relative;
+  overflow: hidden;
+  width: 48%;
+}
+.home_classify_stroylist:first-child{
+  margin-right: 4%;
+}
+.home_classify_stroylist image{
+  width: 100%;
+  height: 480rpx;
+  border-radius: 10rpx;
+}
+.home_classify_stroylist text{
+  display: block;
+  padding:5px 0;
+  font-size:28rpx;
+}
+.home_classify_stroylist p{
+  color: #959595;
+  padding:5px 0;
+  font-size: 26rpx;
+}
+.index1-list {
+  width: 100%;
+  margin-bottom:40rpx;
+  margin-top:20rpx;
+}
+.indeximg {
+  width:100%;
+  height:460rpx;
+  display:block;
+  border-radius:10px;
+  position:relative;
+}
+.money {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  color: #fff;
+  padding: 16rpx 20rpx;
+  font-size: 32rpx;
+  background: rgba(0,0,0,.8);
+}
+.describe {
+  overflow:hidden;
+  color:#555555;
+  font-size:24rpx;
+  padding:0rpx 10rpx;
+  line-height:38rpx;
+}
+.section_cont_intro {
+  font-size:30rpx;
+  padding:20rpx 10rpx 10rpx;
+  font-weight:bold;
+  letter-spacing: 2rpx;
+  color:#323232;
+}
+.home_classify_img image{
+  width:35rpx;
+  height:26rpx;
+  margin-right:10rpx;
+}
+.home_classify_img image:last-of-type{
+  width:25rpx;
+  height: 29rpx;
+  margin-left: 10rpx;
+}
+.home_classify_img{
+  padding:5rpx 10rpx;
+}
+.home_classify_img p{
+  color:#555555;
+  font-size:24rpx;
+  position: relative;
+  top:-3rpx;
+}
+.provider_item{
+  margin: 50rpx 0;
+}

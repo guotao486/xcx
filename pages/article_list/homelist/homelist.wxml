@@ -1,0 +1,140 @@
+<!--pages/index/index.wxml-->
+<view class='articles_header'>
+   <b class="rich_media_title">乡村共建</b>
+   <view class='flex_context account_info'>
+      <view class='flex_hd'>
+         <image src='http://wx.qlogo.cn/mmhead/Q3auHgzwzM6IpWW0GAiaS2M8j8rdStq9H17sooQxcYze62OGLictLbrg/0'/>
+      </view>
+      <view class='flex_bd'>
+        乡侬
+      </view>
+   </view>
+</view>
+
+<!--左右滚动  -->
+<view class='container'>
+    <scroll-view class="content" scroll-x="true">
+      <view class="inner">
+        <block wx:for="{{headList}}" wx:for-item="list" wx:key="*this">
+        <view class="movie-item" > 
+        <navigator url="../../story_detail/story_detail?art_id={{list.art_id}}">
+          <image src="{{list.art_pic}}"></image>
+        </navigator> 
+        <text class="title">{{list.art_title}}</text> 
+      </view>
+       </block>
+      </view>
+    </scroll-view> 
+ </view>
+
+ <view class='conter'>
+   <view class='vux-tab'>
+      <view class="vux-tab-item {{num == 0 ?'vux-tab-selected':''}}" data-type="{{type.typeZero}}" bindtap="swichNav" data-num="0">{{tab.tabNameZero}}</view>
+      <view class="vux-tab-item {{num == 1 ?'vux-tab-selected':''}}" data-type="{{type.typeOne}}" bindtap="swichNav" data-num="1">{{tab.tabNameOne}}</view>
+      <view class="vux-tab-item {{num == 2 ?'vux-tab-selected':''}}" data-type="{{type.typeTwo}}" bindtap="swichNav" data-num="2">{{tab.tabNameTwo}}</view>
+    </view>
+
+    <block wx:if="{{num!=2}}">
+    <view class='storyUl'>
+     <block wx:for="{{list}}" wx:for-item="list" wx:for-index="index">
+        <view class='storyLl'>
+            <navigator url='../../story_detail/story_detail?art_id={{list.art_id}}'>
+              <view class='article_list'>
+                 <view class='cont_space-between'>
+                    <text class="title js_title">{{list.art_title}} </text>
+                    <span class="desc">原创:{{list.username}}</span>
+                 </view>
+                 <view class='cover_js_img'>
+                    <image src='{{list.art_pic}}'/>
+                 </view>
+              </view>
+            </navigator> 
+        </view>
+      </block>
+     </view>
+     </block>
+     <block wx:else>
+     <!-- 查看需求 -->
+     <view class='comment_xuqiu'>
+        <!-- <view class='comment'>
+            TA的需求
+        </view> -->
+        <view class='comment-new'>
+          <view class='wrap'>
+            <block wx:for="{{list}}" wx:for-item="item">
+              <view class='public-comment-show'>
+                <view class='pcs-right'>
+                    <view class='pcs-right-htop'>
+                      <a class="anickname">{{item.name}}</a>
+                      <span class="spandate">{{item.create_time}}</span>
+                    </view>
+                    <text class='pmainContent'>{{item.company}}</text>
+                    <text class='pmainContent'>{{item.describe}}</text>
+
+                    <block wx:if="{{item.reply}}">
+                    <view class='comment-show_hf'>
+                       回复 :
+                       <span>{{item.reply.describe}}</span>
+                    </view>
+                    </block>
+                </view>
+              </view>
+              </block>
+          </view>
+        </view>
+      </view>
+
+      <!--表单 弹出模态框  -->
+      <form bindsubmit="formSubmit">
+        <view class="modal-mask_w" bindtap="hideModal" wx:if="{{showModal}}"></view>
+          <view class="modal-dialog_w" wx:if="{{showModal}}">
+           <ul class="form_ov_li">
+              <li class="form_ul_li">
+                  <view class="fl_tc">
+                    <label for="name" class="lable">联系人</label>
+                  </view>
+                  <view class="fl_r">
+                    <input type="text" name="name" class="i_bor"/>
+                  </view>
+              </li>
+              <li class="form_ul_li">
+                  <view class="fl_tc">
+                    <label for="company" class="lable">单位</label>
+                  </view>
+                  <view class="fl_r">
+                    <input type="text" name="company" class="i_bor"/>
+                  </view>
+              </li>
+              <li class="form_ul_li">
+                  <view class="fl_tc">
+                    <label for="tel" class="lable">电话</label>
+                  </view>
+                  <view class="fl_r">
+                    <input type="text" name="tel" class="i_bor"/>
+                  </view>
+              </li>
+              <li class="form_ul_li">
+                  <view class="fl_textarea">
+                    <label for="describe" class="lable">简介</label>
+                  </view>
+                  <view class="fl_r_textarea">
+                    <textarea name="describe" wrap="hard"/>
+                  </view>
+              </li>
+          </ul>
+            <view class="modal-footer_w">
+              <button class="btn-cancel_w" bindtap="onCancel" >取消</button>
+              <button class="btn-confirm_w" form-type='submit'>确定</button>
+            </view>
+        </view>
+      </form>
+
+      <!-- 提需求 -->
+      <view class="glbtn_w">
+          <p class="layout_w">				  
+              <button bindtap="showDialogBtn">我要提需求</button>
+          </p>                          
+		  </view>
+      </block>
+
+ </view>

@@ -1,0 +1,295 @@
+<!--pages/xiangqing/xiangqing.wxml-->
+<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscroll="scroll" scroll-into-view="{{toView}}" hidden="{{flag2}}">
+  <!--项目信息  -->
+    <view class="container pd20">
+        <view class="lump2-right lump-activityright">
+            <view class="act-detail">
+                <text class="name">{{common.act_name}}</text>
+                <image src="http://www.xxiangfang.com/{{common.pic_url}}" class="act-coverimg"></image>
+          <!--  通过活动act_type类型区分模板现实  pack==套餐-->
+              <!-- <block wx:if="{{common.act_type=='pack'}}">
+                <block wx:if="{{common.act_fee=='免费'}}">
+                <text class="pay">免费</text>
+                </block>
+                <block wx:if="{{common.act_fee!='免费'}}">
+                <text class="pay">
+                {{common.da_price}}-{{common.sa_price}}元</text>
+                </block>
+              </block> -->
+              <block wx:if="{{common.act_type=='youxue'}}">
+                <block wx:if="{{common.act_fee=='免费'}}">
+                <text class="pay">免费</text>
+                </block>
+                <block wx:if="{{common.act_fee!='免费'}}">
+                <text class="pay">
+                {{common.price}}元</text>
+                </block>
+              </block>
+              <block wx:else>
+                <block wx:if="{{common.act_fee=='免费'}}">
+                <text class="pay">免费</text>
+                </block>
+                <block wx:if="{{common.act_fee!='免费'}}">
+                <text class="pay">
+                  <block wx:if="{{common.sa_price!='0.00'}}">
+                  {{common.sa_price}}</block><block wx:if="{{common.sa_price!='0.00'&&common.da_price!='0.00'}}">-</block><block wx:if="{{common.da_price!='0.00'}}">{{common.da_price}}</block>元/人</text>
+                </block>
+              </block>
+                <block>
+                <p class="text">
+                    费用:
+                    <!--吃：特色农家风味中餐
+                    导：全程由导游指引体验-->
+                    <!-- 玩：{{common.characteristic}} -->
+                </p>
+                </block>
+                <view class='goods-detail-name'>
+                   <view class='goods-detail-left'>
+                      <p class="time">
+                  <image src="../../resources/images/hrl.png" class="img2"/>{{common.start_time}}——{{common.format_end_time}}
+                      </p>
+                      <text class="time">人数限制：{{common.person_num}}</text>
+                   </view>
+                   <view class='goods-detail-right' bindtap="onChangeShowStates">
+                       <image src='../../../../resources/images/share.png' class='share_img'/>
+                       <text class='textdetail'>分享</text>
+                    </view>
+                </view>
+                <p class="endtime_act">距报名截止还有：
+                <p class="lxftime">
+                <block wx:if="{{clock!='0天0小时0分钟0秒'}}">{{clock}}</block>
+                <block wx:if="{{clock=='0天0小时0分钟0秒'}}">已经截止</block>
+                </p>
+                </p>
+            </view>
+
+
+            <view class="act-detail2" id="inToView1"> 
+                <!--活动安排-->
+                <ul class="act-plan">
+                    <p class="title"><em class="em1"></em><span class="span1">活动安排</span></p>
+                    <block wx:for="{{Arrange}}">
+                    <li class="li"><em class="em2"></em><span class="span2">{{item}}</span></li>
+                    </block>
+                </ul>
+          </view>
+        </view>
+    </view>
+
+
+  <!--特色  -->
+    <view class="container pd20"  id="inToView2">
+      <!-- <view class="act-cover"> 
+        <p>特色：{{common.introduction}}</p>
+      </view> -->
+      <view class="act-cover2">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+    </view>
+
+     
+  <!--  评论模块  -->
+    <view class="container pd20" id="inToView3">
+    <view class="mobile-comment"> 
+      <view class="public-project-background">
+        <block wx:if="{{activity_comment!='暂无评论~'&&activity_comment!=undefined}}">
+        <view class="mobile" >全部评论</view> 
+        </block>
+        <block wx:if="{{activity_comment!='暂无评论~'&&activity_comment!=undefined}}">
+            <block wx:for="{{activity_comment}}" wx:for-item="comment" >
+            <view class="wrap"> 
+            <view class="public-comment-show clearfix"> 
+
+              <view class="pcs-left"> 
+              <a href="javascript:;"><image class="pcs-headimg" src="{{comment.avatarurl}}" /></a> 
+              </view> 
+              <view class="pcs-right"> 
+              <view class="pcs-right-htop"> 
+                <a class="anickname" >{{comment.username}}
+                <block wx:if="{{comment.star==1}}">
+            <image src="{{comment.star_pic}}" class="imgs2"></image></block>
+                <block wx:elif="{{comment.star==2}}">
+  <image src="{{comment.star_pic}}" style="width:30px;height:15px;"></image></block>
+                <block wx:elif="{{comment.star==3}}">
+  <image src="{{comment.star_pic}}" style="width:45px;height:15px;"></image></block>
+                <block wx:elif="{{comment.star==4}}">
+  <image src="{{comment.star_pic}}" style="width:60px;height:15px;"></image></block>
+              <block wx:elif="{{comment.star==5}}">
+  <image src="{{comment.star_pic}}" style="width:75px;height:15px;"></image></block>
+              <block wx:else>
+                </block>
+                </a> 
+                <span class="spandate">{{comment.pub_time}}</span> 
+              </view> 
+              <text class="pmainContent">{{comment.content}}</text> 
+
+              <!-- <view class="pcs-right-coment"> 
+              <view class="pcs-right-htop"> 
+                <a class="anickname">徐正宗</a> 
+                    <span class="spandate">2017-07-25 10:23:13</span> 
+                </view> 
+                <p class="pmainContent"> <span class="coloraaa">@哎哟喂</span> 好的呢，感谢您的支持！ </p> 
+              </view> -->
+
+              <a class="reply" bindtap="reply" data-cid="{{comment.c_id}}">回复</a>
+              <a class="reply" wx:if="{{comment.uid==comment.login_uid}}" bindtap="del" data-cid="{{comment.c_id}}">删除</a>
+                <view wx:if="{{comment.c_id==reply_id}}" hidden="{{reply}}" class="reply_box">
+                <form bindsubmit="commentForm" report-submit >	
+                  <textarea name="evaContent" maxlength="50" value="回复 {{comment.username}}:" class="textarea" /> 
+                  <input hidden="true" name="comment_pid" value="{{comment.c_id}}" />
+                  <input hidden="true" name="comment_user" value="回复 {{comment.username}}:" />
+                  <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+                <button class="save_btn"  hidden="{{fla}}">发送中</button>
+                </form>
+
+                </view>
+              </view>
+            </view> 
+            </view> 
+            </block>
+
+            <a class="goods" bindtap="bindDownLoad">查看更多</a>
+            
+            <form bindsubmit="commentForm2" report-submit >
+  五星评级<radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:for-index="in">
+      <radio hidden="true" value="{{item.value}}" checked="{{item.checked}}"/>
+      <image src="{{item.name}}" class="imgs1" bindtap="score{{in}}"></image>
+    </label>
+  </radio-group>          	
+              <textarea  name="evaContent" maxlength="50" placeholder="" class="textarea" /> 
+              <input hidden="true" name="comment_pid" value="0" />
+              <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+              <button class="save_btn"  hidden="{{fla}}">发送中</button>
+            </form>
+          </block>
+          <block wx:else>
+      
+          <!-- <view class="center">
+          {{activity_comment}}
+          </view> -->
+          
+            <!--这里单独写一个发表评论功能，与上面【回复、删除和展示评论区分开】-->
+
+          <form bindsubmit="commentForm3" report-submit >	
+  五星评级<radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:for-index="in">
+      <radio hidden="true" value="{{item.value}}" checked="{{item.checked}}"/>
+      <image src="{{item.name}}" class="imgs1" bindtap="score{{in}}"></image>
+    </label>
+  </radio-group>           
+            <textarea  name="evaContent" maxlength="50" placeholder="" class="textarea" /> 
+            <input hidden="true" name="comment_pid" value="0" />
+            <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+              <button class="save_btn"  hidden="{{fla}}">发送中</button>
+          </form>
+          </block>
+          
+        </view> 
+      </view> 
+    </view>
+
+ <!--联系客服  -->
+      <!-- <view class="cotact_view">
+          <text class="tsa1">
+          在
+          线
+          客
+          服
+          </text>
+          <contact-button  type="default-light"  size="20" session-from="weapp" style="padding-top:5px"></contact-button>
+      </view> -->
+
+</scroll-view>
+
+    <!--报名-->
+      <!-- <block wx:if="{{common.act_type!='youxue'&&common.act_fee=='免费' && clock!='0天0小时0分钟0秒'}}">
+        <navigator url="../enlist/enlist?unitPrice=0.00&is_home=0&a_id={{common.a_id}}&act_name={{common.act_name}}&kind=2&start_time={{common.start_time}}&end_time={{common.format_end_time}}">
+          <button type="submit" class="btn" >{{common.book}}</button>
+        </navigator>
+      </block>
+      <block wx:elif="{{common.act_type!='youxue'&&common.act_fee!='免费' && clock!='0天0小时0分钟0秒' && common.join_num!=common.limit_num}}">
+        <navigator url="../enlist/enlist?unitPrice={{common.act_fee}}&is_home=0&a_id={{common.a_id}}&act_name={{common.act_name}}&kind=2&start_time={{common.start_time}}&end_time={{common.format_end_time}}">
+          <button type="submit" class="btn" >{{common.book}}</button>
+        </navigator>
+      </block> -->
+            <!--  游学报名，跳转至enlist_youxue  -->
+      <!-- <block wx:elif="{{common.act_type=='youxue'&&common.act_fee!='免费' && clock!='0天0小时0分钟0秒'}}">
+        <navigator url="../enlist_youxue/enlist_youxue?unitPrice={{common.act_fee}}&is_home=0&a_id={{common.a_id}}&act_name={{common.act_name}}&kind=2&start_time={{common.start_time}}&end_time={{common.format_end_time}}">
+          <button type="submit" class="btn" >{{common.book}}</button>
+        </navigator>
+      </block>
+      <block wx:elif="{{common.act_type=='youxue'&&common.act_fee=='免费' && clock!='0天0小时0分钟0秒'}}">
+        <navigator url="../enlist_youxue/enlist_youxue?unitPrice={{common.act_fee}}&is_home=0&a_id={{common.a_id}}&act_name={{common.act_name}}&kind=2&start_time={{common.start_time}}&end_time={{common.format_end_time}}">
+          <button type="submit" class="btn" >{{common.book}}</button>
+        </navigator>
+      </block> -->
+      <block wx:if="{{clock!='0天0小时0分钟0秒'}}">
+      <navigator url="../activity_enlist/activity_enlist?unitPrice={{common.act_fee}}&is_home=0&a_id={{common.a_id}}&act_name={{common.act_name}}&kind=2&start_time={{common.start_time}}&end_time={{common.format_end_time}}">
+          <button type="submit" class="btn" >{{common.book}}</button>
+        </navigator>
+      </block>
+      <block wx:elif="{{common.join_num==common.limit_num}}">
+        <button type="button" class="btn1" >{{common.book}}</button>
+      </block>
+      <!--<block wx:elif="{{clock=='0天0小时0分钟0秒'}}">-->
+      <block wx:else>
+        <button type="button" class="btn1" >{{common.book}}</button>
+      </block>
+
+    
+
+<!--  地图  -->
+    <view class="storeotherinfo" id="inToView3" hidden="{{flag}}"> 
+     <view class="contactinfo"> 
+      <view class="trafficrouteicon"></view> 
+      <pre  class="item-desch100">
+<view class="b_1">您目前位于 : {{city}} - {{district}}</view>
+<view class="b_2">距离目的地约 : {{distance}}</view>
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" polyline="{{polyline}}" bindtap='mapClick' scale="10" style="width: 100%; height: 350px;" />
+      <!--地图PC端，读IP从武汉市政府出发；手机端读真实经纬度 -->
+      </pre> 
+     </view> 
+    </view> 
+
+      <!--安排 介绍 等 -->
+      <view class="{{vux}}">
+        <view class="nav nav-backdrop"> 
+     <block wx:for="{{orientationList}}" wx:for-index="indexxx"> 
+          <view class="{{(indexxx+1)==click_id?'nav-box':'nav-box2'}}"> 
+          <span  data-id="{{item.id}}" bindtap="scrollToViewFn">{{item.region}}</span> 
+          </view>
+      </block>
+          <view class="{{click_id==4?'nav-box':'nav-box2'}}"> 
+          <span  data-id="4" bindtap="map_click">导航</span> 
+          </view>
+
+        </view>
+       </view>
+
+         <!-- 微信分享 -->
+  <view class="{{showViews?'hide':'show'}}">
+    <view class='detail_share'>
+      <view class="mask" bindtap="onChangeShowStates"></view>
+      <view class='mask-block_share'>
+        <view class='mask-block_shareimg'>
+           <view class='vux-tab-item'>
+              <button class='share_btn' open-type="share" bindtap='onShareApp'>
+                <image src='/pages/shop/component/image/weixin.png'/>
+                <text>分享给朋友</text>
+              </button>
+           </view>
+           <view class='vux-tab-item'>
+              <navigator url='/pages/shop/component/details_share/details_share?id={{common.a_id}}&type=activity'>
+                <image src='/pages/shop/component/image/tuijian.png'/>
+                <text>分享到朋友圈</text>
+              </navigator>
+           </view>
+        </view>
+        <button bindtap="onChangeShowStates" class='mask-block_share_btn'>关闭</button>
+      </view>
+    </view>
+  </view>

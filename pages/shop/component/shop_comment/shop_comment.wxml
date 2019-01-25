@@ -1,0 +1,43 @@
+<!--pages/shop/component/shop_comment/shop_comment.wxml-->
+<form bindsubmit="formSubmit" >
+  <view class='border'>
+    <view class='shop_time'>
+      <text>时间：</text>
+      <p>{{order_time}}</p>
+    </view>
+    <view class='shop_order'>
+      <text>订单：</text>
+      <p>{{order_no}}</p>
+    </view>
+
+  <block wx:for="{{goods}}" wx:for-index="index" wx:key="{{goods}}">
+    <view class='shop_img'>
+      <view class="o-t-item"> 
+        <view class="item-img"> 
+        <image src="{{item.img}}" /> 
+        </view> 
+        <view class="item-info"> 
+            <text class="title">{{item.goods_array.name}} </text> 
+            <text class="nums">数量： {{item.goods_nums}}</text> 
+            <text class="price"> ￥{{item.real_price}} </text> 
+        </view> 
+      </view>
+    </view>
+
+    <view class='shop_comment'>
+      <p>商品满意程度：
+        <view class='comment'>
+          <block wx:for="{{item.star}}"  wx:for-index="sindex" wx:for-item="star">
+            <image src='../../../../resources/images/{{star.name}}' bindtap='starTap' id="{{index}}" data-value="{{star.value}}" data-id = "{{item.id}}"/>
+          </block>
+        </view>
+      </p>
+      <textarea class='textarea' placeholder='大于50个字的优质内容就有机会出现在评论精选中哦~' fixed="true" bindinput="commentSet" id="{{index}}"></textarea>
+    </view>
+  </block>
+    <view class='footer'>
+      <button formType="submit">提交评价</button>
+    </view>
+  </view>
+</form>
+

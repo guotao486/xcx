@@ -1,0 +1,90 @@
+<!--pages/order_listdetail/order_listdetail.wxml-->
+   <view class="blank15"></view>
+    <view class="ul_block ul_block_list">
+      <ul>
+        <li class="webkit-box">
+          <label class="input_lable mr10">项目名称:</label>
+          <view class="list_con">
+            <a href="" class="f_blue">{{order_msg.act_name}}</a>
+          </view>
+        </li>
+        <li class="webkit-box ">
+          <label class="input_lable mr10">应付金额:</label>
+          <view class="list_con">
+            <span class="f_money">{{order_msg.price}}</span>
+          </view>
+        </li>
+        
+        <li class="webkit-box">
+          <label class="input_lable mr10">优惠信息:</label>
+          <view class="list_con">{{order_msg.discount_remarks}}</view>
+        </li>
+       
+      
+        <li class="webkit-box">
+          <label class="input_lable mr10">优惠金额:</label>
+          <view class="f_money">{{order_msg.discount}}</view>
+        </li>
+      
+        <li class="webkit-box ">
+          <label class="input_lable mr10">支付金额:</label>
+          <view class="list_con">
+            <span class="f_money">{{order_msg.act_amount}}</span>
+          </view>
+        </li>
+
+        <li class="textarea webkit-box">
+          <label class="input_lable mr10">收款情况:</label>
+          <view class="list_con">{{order_msg.j_status}}</view>
+        </li>
+
+        <li class="webkit-box">
+          <label class="input_lable mr10">支付时间:</label>
+          <view class="list_con">{{order_msg.dateline}}</view>
+        </li>
+
+        <block wx:if="{{order_msg.act_type == 'youxue'}}">
+          <li class="webkit-box">
+            <label class="input_lable mr10">游学目的:</label>
+            <view class="list_con">{{order_msg.remark}}</view>
+          </li>
+        </block>
+        <block wx:else>
+          <li class="webkit-box">
+            <label class="input_lable mr10">备注信息:</label>
+            <view class="list_con">{{order_msg.remark}}</view>
+          </li>
+        </block>
+        
+          <li class="webkit-box">
+            <label class="input_lable mr10">住宿条件:</label>
+            <view class="list_con">{{order_msg.a_title}}</view>
+          </li>
+          <li class="webkit-box" wx:if="{{order_msg.a_remarks != ''}}">
+            <label class="input_lable mr10">住宿信息:</label>
+            <view class="list_con">{{order_msg.a_remarks}}</view>
+          </li>
+          <li class="webkit-box" >
+            <label class="input_lable mr10">住宿时间:</label>
+            <view class="list_con">{{order_msg.start_date}} —— {{order_msg.end_date}}</view>
+          </li>
+          <li class="webkit-box" wx:if="{{order_msg.a_price != 0}}">
+            <label class="input_lable mr10">住宿费用:</label>
+            <view class="f_money">{{order_msg.a_price}}</view>
+          </li>
+
+          <block wx:if="{{order_msg.isSurplus == 0}}">
+            <li class="webkit-box">
+              <label class="input_lable mr10">需付余款:</label>
+              <view class="f_money">{{order_msg.surplus}} </view>
+            </li>
+          <button class="save_btn pay" style="background:green" bindtap='surplusPay'>确认支付</button>
+          </block>
+          <block wx:else>
+            <li class="webkit-box">
+              <label class="input_lable mr10">已付余款:</label>
+              <view class="f_money">{{order_msg.surplus}} </view>
+            </li>
+          </block>
+      </ul>
+    </view>

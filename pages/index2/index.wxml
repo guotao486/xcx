@@ -1,0 +1,80 @@
+<view class="container">
+  <scroll-view  scroll-y="true" style="height:{{scrollHeight}}px;" 
+        class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
+
+   <!-- 定位 -->
+   <view class='ss'>
+      <view class='tm'>
+        <image src='../../resources/images/dw.png' class='dz'/>
+        <text wx:if="{{locationSet}}">{{city}}</text>
+        <block wx:else>
+        <button open-type="openSetting" class='openSetting'>点击授权</button>
+        </block>
+      </view>
+      <input type='text' value='{{search}}' placeholder='请输入关键词' class='input' bindinput='setKey' bindconfirm="searchList"/>
+      <icon class="search_in-box" type="search" size="15" bindtap='searchList'></icon>
+      <navigator url='../contact_kefu/contact_kefu'>
+      <view class='kefu'>
+          <image src='../../resources/images/kf.png' class='kf'/>
+          <text>客服</text>
+      </view>
+      </navigator>
+   </view>
+
+   <!-- 活动分类 -->
+   <view class='vux-tab'>
+      <view class="vux-tab-item {{curIndex === 0 ?'vux-tab-selected':''}}" bindtap="bindTap" data-index="0">乡建培训</view>
+      <view class="vux-tab-item {{curIndex === 1 ?'vux-tab-selected':''}}" bindtap="bindTap" data-index="1">亲子户外</view>
+      <view class="vux-tab-item {{curIndex === 2 ?'vux-tab-selected':''}}" bindtap="bindTap" data-index="2">乡村旅游</view>
+   </view>
+
+   <!--轮播  -->
+    <swiper catchtap="onSwiperTap" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  circular="true">
+        <block wx:for="{{ad_list}}" wx:for-item="item" wx:for-index="index">
+            <swiper-item>
+                <image src="{{item.ad_file}}" data-postid="{{index+652}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <!--<block wx:if="{{notices.length > 0}}">
+        <view class="notice-panel">
+            <image class="notice-image" src="../../resources/images/ic_notice.png" />
+            <view class="notice-message" animation="{{animationNotice}}" style="opacity:{{noticeIdx >= 0}};">
+                <span style="color:#999999">热门活动</span><span style="color:#3273c3">{{notices[noticeIdx]}}</span>
+            </view>
+        </view>
+    </block>-->
+       <view class="goods-panel">
+          <template name="goodsList">
+              <block wx:if="{{activity.act_name}}">
+                <view class="nav_section{{index % 2 == 0?' odd':''}}">
+                  <navigator url="../activity_detail/activity_detail?id={{activity.a_id}}" >
+                      <view class="online"></view>
+                        <view class="nav_section_items">
+                            <view class="section_cont_intro">{{activity.subhead}}</view>
+                              <view class="zc-endTime">
+                              <image src="../../resources/images/time.png" />
+                                  <span class="endTime">
+                                <block wx:if="{{activity.end_flag=='已结束'}}">已结束</block>
+                                <block wx:if="{{activity.end_flag=='进行中'}}">距报名截止还有：{{activity.remaining_time}}</block>
+                                  </span>
+                              </view>
+                              <image src="{{activity.pic_url}}" class="section_image">
+                                <span class="section_cont_price">{{activity.sa_price}}</span>
+                              </image>
+                              <view class="section_cont_intro1">{{activity.act_name}}</view>
+                        </view>
+                    </navigator>
+                </view>
+              </block>
+            </template>
+        <block wx:for="{{list}}">
+           <template is="goodsList" data="{{index:index,activity:item}}"/>
+        </block>
+      </view>
+  </scroll-view>
+  <block wx:if="{{list.flag==1}}">
+  <view class="classname1" style="text-align:center;">我是有底线的~</view>
+  </block>
+  <view class="tabbar-border"></view>
+</view>

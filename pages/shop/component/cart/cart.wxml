@@ -1,0 +1,160 @@
+<view wx:if="{{hasList}}">
+  <view class='allItemv'>
+    <!-- 循环店铺 -->
+    <view class='tm'>
+        <image src='../../../../resources/images/dw.png' class='dz'></image>
+        <block wx:if="{{locationSet == true}}">
+        配送至 {{city}}
+        </block>
+        <block wx:else>
+          <button open-type="openSetting" class='openSetting'>点击授权</button>
+        </block>
+    </view>
+    <block wx:for="{{list}}" wx:for-index="sidx" wx:for-item="seller">
+      <view class='bundlev2'>
+        <view class='shop'>
+          <view class='ico'>
+            <icon wx:if="{{seller.sellerStatus}}" class="cart-select" type="success" color="#f50" size='16'  data-sid="{{sidx}}"  bindtap="selectSeller"/>
+              <icon wx:else type="circle" class="cart-select" size='16'  data-sid="{{sidx}}"   bindtap="selectSeller"/>
+            <image src='../image/store_b.png' />
+          </view>
+          <view class='contact'>
+            <navigator url=''>
+                <text class='title'>{{seller.true_name}}</text>
+            </navigator>
+          </view>
+          <view class='state'>
+            <view class='state-cont' bindtap="onChangeShow" data-sid='{{sidx}}'>
+                <text>编辑</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 循环商品 -->
+        <block wx:for="{{seller.goods}}" wx:for-index="gidx" wx:for-item="goods">
+          <view class='shop_title' >
+            <view class="cart-btn {{seller.showView?'show':'hide'}}">
+              <icon wx:if="{{goods.selected}}" type="success" color="#f50" size='16' data-type="goods" data-sid="{{sidx}}" data-index="{{gidx}}"  bindtap="selectList"/>
+              <icon wx:else type="circle"  size='16' data-type="goods" data-sid="{{sidx}}" data-index="{{gidx}}"  bindtap="selectList"/>
+            </view>
+            <view class='cart-img'>
+              <image src='{{goods.image}}' />
+            </view>
+            <view class='cart-pr'>
+                <text>{{goods.title}}</text>
+                <text class='gk'></text>
+                <view class='shop_top'>
+                  <p class='pay'>￥ {{goods.price}}</p>
+                  <view class="value-box">
+                    <span class="minus"  bindtap="minusCount" data-type="goods" data-sid="{{sidx}}" data-index="{{gidx}}">
+                      <a>-</a>
+                    </span>
+                    <span>
+                      <input type="number" disabled="true" class="buy-num" value="{{goods.num}}"/>
+                    </span>
+                    <span class="add" bindtap="addCount" data-type="goods" data-sid="{{sidx}}" data-index="{{gidx}}">
+                      <a>+</a>
+                    </span>
+                  </view>
+                </view>
+            </view>
+            <view class="item-del {{seller.showView?'hide':'show'}}"  bindtap="deleteList" data-type="goods"  data-sid="{{sidx}}" data-index="{{gidx}}">
+                <text >删除</text>
+            </view>
+          </view>
+        </block>
+
+        <view class='shop_title' wx:for="{{seller.product}}" wx:for-index="pidx" wx:for-item="product">
+          <view class="cart-btn {{seller.showView?'show':'hide'}}">
+             <icon wx:if="{{product.selected}}" type="success" color="#f50" size='16' data-type="product" data-sid="{{sidx}}" data-index="{{pidx}}"  bindtap="selectList"/>
+              <icon wx:else type="circle"  size='16' data-type="product" data-sid="{{sidx}}" data-index="{{pidx}}"  bindtap="selectList"/>
+          </view>
+          <view class='cart-img'>
+            <image src='{{product.image}}' />
+          </view>
+          <view class='cart-pr'>
+              <text>{{product.title}}</text>
+              <text class='gk'>规格：{{product.spec}}</text>
+              <view class='shop_top'>
+                <p class='pay'>￥ {{product.price}}</p>
+                <view class="value-box">
+                  <span class="minus" bindtap="minusCount" data-type="product" data-sid="{{sidx}}" data-index="{{pidx}}">
+                    <a>-</a>
+                  </span>
+                  <span>
+                    <input type="number" disabled="true" class="buy-num" value="{{product.num}}"/>
+                  </span>
+                  <span class="add"  bindtap="addCount" data-type="product" data-sid="{{sidx}}" data-index="{{pidx}}">
+                    <a>+</a>
+                  </span>
+                </view>
+              </view>
+          </view>
+          <view class="item-del {{seller.showView?'hide':'show'}}" bindtap="deleteList" data-type="product"  data-sid="{{sidx}}" data-index="{{pidx}}">
+              <text >删除</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+      <!-- 结算 -->
+      <view class='cart-footer'>
+        <view class='cart-btns'>
+          <view class='ft-cb'>
+            
+            <icon wx:if="{{selectAllStatus}}" type="success" color="#f50" class="cb-footer" bindtap="selectAll"/>
+            <icon wx:else type="circle" class="cb-footer" bindtap="selectAll"/>
+          </view>
+          <text>全选</text>
+          <view class='shop_pay'>
+              <span>合计：</span>
+              <p class="o-t-price">￥ {{totalPrice}}</p>
+          </view>
+          <view class='btn'>
+          <navigator url="../orders/orders">
+            <text>结算（{{sumNum}}）</text>
+          </navigator>
+          </view>
+        </view>
+      </view>
+
+  </view>
+
+  <view class="footer-tabbar"> 
+    <view class="weui_tabbar"> 
+      <navigator url="../../../index/index" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+      <view class="weui_tabbar_icon"> 
+        <image class="select-icon" src="../../../../resources/images/ic_home.png" /> 
+      </view> 
+        <p class="weui_tabbar_label"><span slot="label">活动</span></p> 
+      </navigator> 
+      <navigator url="../../../villagelist/villagelist" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+        <view class="weui_tabbar_icon"> 
+          <image class="select-icon" src="../../../../resources/images/ic_listing_selected.png" /> 
+        </view> 
+        <p class="weui_tabbar_label"><span slot="label">简单乡建</span></p> 
+      </navigator> 
+        <navigator url="../../../index/index" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+      <view class="weui_tabbar_icon"> 
+        <image class="select-icon" src="../../../../resources/images/ic_win.png" /> 
+      </view> 
+        <p class="weui_tabbar_label"><span slot="label">村宿</span></p> 
+      </navigator> 
+      <navigator url="../../../villagelist/villagelist" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+      <view class="weui_tabbar_icon"> 
+        <image class="select-icon" src="../../../../resources/images/ic_find.png" /> 
+      </view> 
+        <p class="weui_tabbar_label"><span slot="label">乡村共建</span></p> 
+      </navigator> 
+      <navigator url="../../../me/me" class="weui_tabbar_item" open-type="switchTab"> 
+      <view class="weui_tabbar_icon"> 
+        <image class="select-icon" src="../../../../resources/images/ic_user.png" /> 
+      </view> 
+      <p class="weui_tabbar_label"> <span slot="label">我</span></p> 
+      </navigator> 
+    </view> 
+  </view>
+</view>
+<view wx:else>
+  <view class="cart-no-data">购物车是空的哦~</view>
+</view>

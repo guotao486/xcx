@@ -1,0 +1,124 @@
+page{
+  margin: 0;
+  padding: 0;
+  font-family: '微软雅黑','宋体',sans-serif;
+  font-size: 28rpx;
+  background: #f7f7f7;
+  color: #323232;
+}
+.me_bag{
+  /* background: #e2465e; */
+  padding: 80rpx 10rpx 120rpx;
+  display:flex;
+  background-size:cover;
+}
+.avatar {
+	/* display: block;
+	margin: 0 auto; */
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	border:1px solid #fff;
+}
+.nickname {
+  flex:1;
+  color:#fff;
+  font-size:28rpx;
+  line-height:2;
+  padding-left:40rpx;
+  letter-spacing:4rpx;
+  padding-top:20rpx;
+}
+.ph{
+  display: block;
+}
+.me_ph{
+  width:21rpx;
+  height:30rpx;
+}
+.ph text{
+  position: relative;
+  left:10rpx;
+  font-size:24rpx;
+  top:-5rpx;
+}
+.me_list{
+  background: #fff;
+  border-radius:10rpx;
+  margin:-88rpx 15rpx 0;
+}
+.me_lists{
+  padding: 20rpx;
+  border-bottom:1px solid #ddd;
+}
+.me_lists image{
+  width:35rpx;
+  height:40rpx;
+}
+.me_lists .me_text{
+  padding-left:30rpx;
+  position:relative;
+  top:-7rpx;
+}
+.me_lists .me_texts{
+  float:right;
+  position:relative;
+  top:-5rpx;
+  font-size:36rpx;
+}
+.list_flex{
+  display: flex;
+  padding: 20rpx 40rpx;
+}
+.list_flex-nav{
+  flex: 1;
+}
+.list_flex-item image{
+  width:40rpx;
+  height:40rpx;
+  display:block;
+  margin:0 auto;
+  padding:20rpx 15px;
+}
+.list_flex-item text{
+  display: block;
+  text-align: center;
+}
+.core-entry{
+  background: #fff;
+  border-radius:10rpx;
+  margin:25rpx 15rpx 0 15rpx;
+}
+.core-entry-list{
+  padding:30rpx 20rpx;
+  border-bottom:1px solid #ddd;
+}
+.core-entry-list image{
+  width: 35rpx;
+  height: 35rpx;
+}
+.core-entry-text{
+  padding-left:30rpx;
+  position:relative;
+  top:-3rpx;
+}
+.core-entry-right{
+  float:right;
+  position:relative;
+  top:-3rpx;
+  font-size:30rpx;
+}
+navigator {
+  display:initial;
+}
+.tabbar-border{
+   width:100%;
+   height:1px;
+   position:fixed;
+   bottom:0;
+   background-color:#ccc;
+}
+.core-entry-list .new{
+  width:70rpx;
+  margin-left:50%;
+}

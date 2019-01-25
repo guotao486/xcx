@@ -1,0 +1,16 @@
+<!--pages/modal/modal.wxml-->
+<template name="modal">
+<view class="modal-mask" bindtap="hideModal"  wx:if="{{showModal}}"></view>
+        <view class="modal-dialog" wx:if="{{showModal}}">
+          <view class="modal-title">微信授权</view>
+          <view class="modal-content">
+           
+           为了给您带来更好的体验，西厢房乡居生活申请获得您的公开信息（昵称、头像等）！
+         
+          </view>
+          <view class="modal-footer">
+            <button class="btn-cancel" bindtap="onCancel" >取消</button>
+            <button class="btn-confirm" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确定</button>
+          </view>
+</view>
+</template>

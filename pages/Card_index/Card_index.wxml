@@ -1,0 +1,31 @@
+<import src="../../modal/modal.wxml" />
+
+<template is="modal" data="{{showModal}}"></template>
+  <view class='content'>
+    <view class='post'>
+      <image src='../../resources/images/d_01.png' mode="widthFix" />
+      <text>卡券活动</text>
+      <text class='float'>  全部（{{total}}）</text>
+    </view>
+    <view class='bgms' >
+  <block wx:for="{{act}}" >
+      <navigator url='../Card_coupons/Card_coupons?id={{item.id}}'>
+        <view class='djjs'>
+          <image src='{{item.image}}' mode="widthFix" />
+          <view class='online'></view>
+        </view>
+      </navigator>
+  </block>
+    </view>
+  </view>
+  
+
+  <navigator url='../Card_me/Card_me'>
+      <view class='content'>
+        <view class='postw'>
+          <image src='../../resources/images/wdk.png' mode="widthFix" />
+          <text>我的卡券</text>
+          <text class='floatw'>全部（{{num}}）</text>
+        </view>
+      </view>
+  </navigator>

@@ -1,0 +1,105 @@
+/* pages/shop/component/shop_comment/shop_comment.wxss */
+page{
+  margin: 0;
+  padding: 0;
+  font-family: '微软雅黑','宋体',sans-serif;
+  font-size: 28rpx;
+}
+.border{
+  border-top: 10rpx solid #f5f5f5;
+}
+.shop_time{
+  padding:25rpx 28rpx;
+  color:#5d5d5d;
+}
+.shop_time text{
+  margin-right: 25rpx
+}
+.shop_order{
+  padding:25rpx 28rpx;
+  color:#5d5d5d;
+  border-top: 1px solid #c2c2c2;
+}
+.shop_order text{
+  margin-right: 25rpx
+}
+.shop_img{
+  padding:25rpx 28rpx;
+  border-top: 1px solid #c2c2c2;
+  border-bottom: 1px solid #c2c2c2;
+}
+.o-t-item {
+    display:-webkit-box;
+}
+.item-img{
+    width: 160rpx;
+    height: 160rpx;
+    margin-right:22rpx;
+}
+.item-img image{
+    width: 160rpx;
+    height: 160rpx;
+}
+.item-info {
+    -webkit-box-flex: 1;
+    -ms-box-flex: 1;
+    -o-box-flex: 1;
+    color: #666
+}
+.item-info .title{
+  font-size: 24rpx;
+}
+.nums{
+  font-size: 24rpx;
+  padding:10rpx 0;
+  display: block;
+}
+.price{
+  font-size: 24rpx;
+  display: block;
+  color: #ff1623;
+}
+.shop_comment{
+  padding:40rpx 28rpx;
+}
+.shop_comment p{
+  letter-spacing: 3rpx;
+  font-size: 30rpx;
+}
+.comment{
+  display: -webkit-inline-box;
+  position: relative;
+  top: 5rpx;
+}
+.comment image{
+  width: 35rpx;
+  height: 35rpx;
+  margin:0 4rpx;
+}
+.textarea {
+    border:#ccc solid 1px;
+    color:#666;
+    border-radius:6rpx;
+    width:100%;
+    margin-top:40rpx;
+    text-indent:24rpx;
+    padding:10rpx 0;
+    background-color:#f5f5f5;
+    letter-spacing:4rpx;
+}
+.footer{
+  padding:50rpx 28rpx;
+  border-top:15rpx solid #f5f5f5;
+}
+.footer button{
+  width:30%;
+  font-size:12px;
+  padding:5px;
+  line-height:35rpx;
+  color:#ff1822;
+  border:1px solid #ff1822;
+  background-color:#fff;
+  float:right;
+  margin-right:20rpx;
+  box-sizing:content-box;
+}

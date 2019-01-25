@@ -1,0 +1,43 @@
+/* pages/Card_me/Card_me.wxss */
+page{
+  background-color:#f8f8f8;
+}
+.content{
+  background-color:#fff;
+  width:100%;
+  margin-top:20rpx;
+  padding:20rpx 0;
+}
+.post{
+  margin-left:45rpx;
+}
+.post image{ 
+  width:70rpx;
+}
+.post text{
+  position:relative;
+  top:-14rpx;
+  color:#595959;
+  font-size:30rpx;
+  left:10px;
+  line-height:80rpx;
+  font-weight: bold;
+}
+.bgms{
+  margin:0 15rpx;
+}
+.tops{
+  margin-bottom: 24rpx;
+}
+.djjs image{
+  width: 100%;
+}
+.relpos{
+  position:relative;
+  float:right;
+  bottom:182rpx;
+  right:63rpx;
+  color:#fff;
+  font-weight:bold;
+  font-size:12px;
+}

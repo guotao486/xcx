@@ -1,0 +1,86 @@
+<view class="container edit_wrap">
+<form bindsubmit="submitForm" report-submit >
+    <view class="mobile">订房信息</view> 
+    <view class="form_group">
+        <text>姓  名：</text>
+        <input type="text" placeholder="请输入姓名" name="data_name" maxlength="20" value="{{U_msg.name}}" />
+    </view>
+    <view class="form_group">
+        <text>电  话：</text>
+        <input type="number" placeholder="请输入电话" maxlength="11" name="data_phone" value="{{U_msg.mobile}}" />
+    </view>
+    <view class="section">
+      <view class="section__title"></view>
+      <picker mode="date" value="{{date1}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChange">
+        <view class="form_group">
+            <text>住房时间：</text>
+            <text class="textss" style="width:460rpx;text-align:left;">{{date1}}</text>
+        </view>
+      </picker>
+      <picker mode="date" value="{{date2}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChangeTwo">
+        <view class="form_group">
+            <text>退房时间：</text>
+            <text class="textss" style="width:460rpx;text-align:left;">{{date2}}</text>
+        </view>
+      </picker>
+      <view class="form_group">
+        <text>备注信息：</text>
+        <input type="text" placeholder="备注信息" name="data_remark" maxlength="50"  value=""/>
+    </view>
+      </view>
+
+      <view class="f-fx">
+      <view class="f-fx1">
+        <view class="pay">
+          <span class="hj" >合计：</span>
+          <p class="o-t-price">￥{{money}}</p>
+        </view>
+        <input hidden="true" name="kind" value="1" />
+        <button class="save_btn" form-type="submit">结算（{{num}}）</button>
+      </view>
+      </view>
+</form>
+</view>
+
+
+<!--订单信息  -->
+<view class="bottoms">
+  <view class="mobile">订单信息<p class="ps1">(预订房间总数超过6(含)间,可享受优惠价)</p></view>
+<block wx:for="{{homeList}}" wx:for-item="homeList" wx:for-index="index">
+    <view class="item-detail">
+      <view class="item-img">
+          <navigator url="../home_detail/home_detail?home_id={{homeList.s_id}}">
+            <image class="imgs" src="{{homeList.pic_url}}"/>
+          </navigator>
+      </view>
+      <view class="item-info">
+      <navigator url="../home_detail/home_detail?home_id={{homeList.s_id}}">
+          <text class="info_name">{{homeList.s_title}}</text> 
+      </navigator>
+          <view class="info_all"> 
+            <view class="info_group"> 
+            <label class="label_l">特色：</label>
+            <span>{{homeList.s_desc}}</span>
+            </view> 
+      
+            <view class="info_group"> 
+            <label class="label_l">订房数量：</label> 
+      <!--<picker bindchange="bindPickerChange" value="{{room_num}}" range="{{array}}">  
+              <text class="textss" style="width:50px;text-align:center;">{{array[room_num]}}</text>
+            </picker>-->
+            <input class="texts1" bindblur="num{{index}}" type="number" placeholder="请输入数量" maxlength="2" name="data_num" value="{{homeList.num}}" />
+            </view>
+
+
+            <view class="info_group"> 
+            <label class="label_l">优惠价：</label>
+            <span class="f_money">￥{{homeList.team_price}}</span> 
+
+            <label class="label_l1">原价：</label>
+            <del class="f_money">￥{{homeList.price}}</del> 
+            </view> 
+          </view> 
+      </view>
+    </view>
+</block>
+</view>

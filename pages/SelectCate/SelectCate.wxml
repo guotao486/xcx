@@ -1,0 +1,69 @@
+<!--pages/SelectCate/SelectCate.wxml-->
+<view class="warp"> 
+   <view class="content"> 
+    <view class="contenter"> 
+     <view class="lump"> 
+      <p class="font13">乡贤论坛暨爱故乡大会—报名</p> 
+     </view> 
+     <view class="way"> 
+      <p class="title"> 乡贤论坛暨爱故乡大会—报名</p> 
+      <p>到会方式：天河机场、孝感东、孝感北站</p> 
+      <p>12月5日24时前成功提交报名的参会成员均赠送一年湖北村镇建设协会会员资格</p> 
+     </view> 
+     <!--票种--> 
+     <view class="lump ticket clearfix {{selected?'checkboxs':'default'}}" bindtap="selected"> 
+      <view class="left"> 
+       <image src="http://www.xxiangfang.com/tpl/default/xian/img/to-icon-ticket.png" />
+      </view> 
+      <view class="left"> 
+       <text>大会收费套餐一 </text> 
+       <text class="font12">2晚酒店住宿单人间，2早4正餐（均为自助餐），论坛课程，论坛资料，机场或高铁定时集体接送</text> 
+      </view> 
+      <view class="ticket-side"> 
+       <p class="money">￥{{price1}}</p> 
+      </view> 
+     </view> 
+     <!--新加--> 
+     <view class="lump ticket clearfix {{selected1?'checkboxs':'default'}}" bindtap="selected1"> 
+      <view class="left"> 
+       <image src="http://www.xxiangfang.com/tpl/default/xian/img/to-icon-ticket.png" /> 
+      </view> 
+      <view class="left"> 
+       <text>大会收费套餐二 </text> 
+       <text class="font12">2晚酒店住宿双人标间（双人合租），2早4正餐（均为自助餐），论坛课程，论坛资料，机场或高铁定时集体接送。</text> 
+      </view> 
+      <view class="ticket-side"> 
+       <p class="money">￥{{price2}}</p> 
+      </view> 
+     </view> 
+     <!--新加1--> 
+     <view class="lump ticket clearfix {{selected2?'checkboxs':'default'}}" bindtap="selected2"> 
+      <view class="left"> 
+       <image src="http://www.xxiangfang.com/tpl/default/xian/img/to-icon-ticket.png" /> 
+      </view> 
+      <view class="left"> 
+       <text>大会收费套餐三 </text> 
+       <text class="font12">2早4正餐（均为自助餐），论坛课程，论坛资料。</text> 
+      </view> 
+      <view class="ticket-side"> 
+       <p class="money">￥{{price3}}</p> 
+      </view> 
+     </view> 
+     <!--票种end--> 
+    </view> 
+   </view> 
+  </view>
+
+
+<!--总金额  -->
+  <view class="fixed">
+        <view class="contenter">     
+          <p class="costbox">总金额
+            <span class="cost">￥{{price}}</span>
+            <navigator url='../SetInfo/SetInfo?price={{price}}'>
+              <button class="btn" value="下一步">下一步</button>
+            </navigator>
+          </p>
+        </view>
+  </view>
+  

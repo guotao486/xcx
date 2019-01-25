@@ -1,0 +1,93 @@
+<view class="container">
+<scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}"  scroll-y="true" style="height:{{scrollHeight}}px;"  bindscroll="scroll" scroll-top="{{scrollTop}}" bindscrolltoupper="refresh">
+    <!-- 定位 -->
+    <view class='ss'>
+      <view class='tm'>
+        <image src='../../resources/images/dw.png' class='dz'/>
+        <text>武汉市</text>
+        <!-- <button open-type="openSetting" class='openSetting'>点击授权</button> -->
+      </view>
+      <input type='text' value='{{search}}' placeholder='请输入关键词' class='input'/>
+      <icon class="search_in-box" type="search" size="15" bindtap='searchList'></icon>
+      <navigator url='../contact_kefu/contact_kefu'>
+      <view class='kefu'>
+          <image src='../../resources/images/kf.png' class='kf'/>
+          <text>客服</text>
+      </view>
+      </navigator>
+   </view>
+
+    <!-- 村宿分类 -->
+    <view class='home_classify'>
+       <text class='home_classify_texts'>热搜民宿</text>
+       <view class='home_classify_tab'>
+          <block wx:for='{{homeType}}' wx:for-item="type">
+            <view class='home_classify-tab-item' bindtap="selected" data-id='{{type.t_id}}'>
+                <image src='{{type.t_pic}}'/>
+                <text>{{type.t_name}}</text>
+            </view>
+          </block>
+       </view>
+
+       <!-- 故事 -->
+       <view class='home_classify_stroy'>
+          <view class='home_classify_stroylist'>
+            <navigator url='../homelist/homelist?type=1'>
+              <image src='https://www.xxiangfang.com/data/uploads/2018/02/08/cs_fdgs.png'/>
+              <text>房东故事</text>
+              <p>民宿的有趣灵魂</p>
+            </navigator>
+          </view>
+          <view class='home_classify_stroylist'>
+            <navigator url='../homelist/homelist?type=2'>
+              <image src='https://www.xxiangfang.com/data/uploads/2018/02/08/cs_ssty.png'/>
+              <text>乡居体验</text>
+              <p>体验乡居之旅</p>
+            </navigator>
+          </view>
+       </view>
+
+       <!-- 房间 -->
+       <view class='home_classify_homes'>
+         <block wx:for="{{homeList}}" wx:for-item="homeList" wx:for-index="index"> 
+            <view class="provider_item">
+              <block wx:if="{{user_type!=3}}">
+                <!-- <navigator url="../home_detail/home_detail?home_id={{homeList.s_id}}"> -->
+                <navigator url="../home_detail/home_detail?home_id={{homeList.s_id}}">
+                  <view class="index1-list">
+                    <image src="{{homeList.pic_url}}" class="indeximg"/>
+                    <!-- <span class="money">￥{{homeList.price}}</span> -->
+                    <view class="section_cont_intro">西厢房 · {{homeList.vil_name}}--{{homeList.s_title}}</view>
+                    <view class='home_classify_img'>
+                       <image src='../../resources/images/icon_pl.png'/><p> {{homeList.commentCount}} </p>
+                       <image src='../../resources/images/icon_dz.png'/><p> {{homeList.cityname}} </p>
+                    </view>
+                    <view class="describe">
+                      {{homeList.s_desc}}
+                      </view>
+                  </view>
+                </navigator>
+              </block>
+          <!--  vip订房进入homedetail_vip页面  -->
+              <!--<block wx:if="{{user_type==3}}">
+                <navigator url="../homedetail_vip/homedetail_vip?home_id={{homeList.s_id}}">
+                <view class="online"></view>
+                  <view class="index1-list">
+                      <view class="section_cont_intro">西厢房 · {{homeList.vil_name}}--{{homeList.s_title}}</view>
+                    <image src="{{homeList.pic_url}}" class="indeximg">
+                    <span class="money">￥{{homeList.price}}</span>
+                    </image>
+                    <view class="describe">
+                      {{homeList.s_desc}}
+                      </view>
+                  </view>
+                </navigator>
+              </block>-->
+            </view>
+          </block>
+       </view>
+    </view>
+    <view class="tabbar-border"></view>
+    </scroll-view>
+</view>
+

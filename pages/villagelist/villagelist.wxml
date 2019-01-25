@@ -1,0 +1,55 @@
+<view class='village_banner'>
+   <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{ad_list}}" wx:for-item="item" wx:for-index="index">
+            <swiper-item>
+                <image src="{{item.ad_file}}" class="slide-image"/>
+                <view class='village_banner_tit'>
+                   <text>美丽乡村</text>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+<view class='village_rm'>
+    <view class="itemname">
+      <text>推荐</text>    
+    </view>
+   <scroll-view class="content" scroll-x="true">
+      <view class="inner">
+          <block wx:for="{{vil_list}}" wx:for-item="vil" wx:key="*this">
+            <view class="movie-item" > 
+              <navigator url="../village_detail/village_detail?vil_id={{vil.v_id}}">
+                <image src="{{vil.title_page}}"></image>
+              </navigator> 
+              <text class="title">{{vil.nickname}}</text> 
+              <view class='village_inner_img'>
+                 <image src='../../resources/images/icon_dz.png'/>
+                 <span>{{vil.address1}}</span>
+              </view>
+            </view>
+        </block>
+      </view>
+    </scroll-view> 
+</view>
+
+<view class='village_banner'>
+ <block wx:for="{{vil_list}}" wx:for-item="vil">
+   <view class="provider_item">
+        <navigator url="../village_detail/village_detail?vil_id={{vil.v_id}}">
+            <view class="bgimg" style="background-image: url({{vil.title_page}})"></view>
+            <view class="provider_item_info">
+                <view class="provider_item_name_addr">
+                    <text>{{vil.nickname}}</text>
+                    <view class='village_inner_img'>
+                        <image src='../../resources/images/icon_dz.png'/>
+                        <span>{{vil.address}}</span>
+                     </view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+  </block>
+</view>
+
+<view class="tabbar-border"></view>

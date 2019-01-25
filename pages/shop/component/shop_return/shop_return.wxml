@@ -1,0 +1,36 @@
+<!--pages/shop/component/shop_return/shop_return.wxml-->
+<view class='content'>
+  <block wx:for="{{goods}}">
+  <navigator url=''>
+      <view class="o-t-item"> 
+        <view class="item-img"> 
+            <image src="{{item.img}}" /> 
+        </view> 
+        <view class="item-info"> 
+            <text class="title">{{item.goods_array.name}}</text> 
+            <text class="nums">数量：{{item.goods_nums}}</text> 
+            <text class="price">￥{{item.real_price}} </text> 
+        </view> 
+      </view>
+  </navigator>
+  </block>
+</view>
+
+<view class='return_money'>
+    <text>退款金额</text>
+    <p>￥{{amount}}</p>
+</view>
+
+<view class='fb_component'>
+  <p class="fbc_title">退款原因<span class='fbc_required'>*</span></p>
+  <view class='fbc_content'>
+    <!-- <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">
+       <text class='texts'>{{area[areaIndex]}}</text>
+    </picker> -->
+    <textarea fixed='true' placeholder='请输入退款说明' class='return_textarea' bindinput='returnContent'></textarea>
+  </view>
+</view> 
+  
+<view class='fotter'>
+   <button bindtap='returnSave'>提交</button>
+</view>

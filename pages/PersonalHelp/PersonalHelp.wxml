@@ -1,0 +1,124 @@
+<!--pages/PersonalHelp/PersonalHelp.wxml-->
+<view class='container'>
+   <view class="ban">
+      <image src="http://www.xxiangfang.com/data/uploads/2018/04/16/picnew1.png" mode="widthFix"/>
+      <!-- <p style="background-image: url('../../resources/images/daybg.png')">
+      <span>剩余</span>
+      <strong>1天</strong>
+      </p> -->
+		</view>
+    <view class="attention boxsize">
+			  <p>
+        <image src="http://www.xxiangfang.com/data/uploads/2018/01/15/horn.png"/>
+         用心点燃希望，用爱撒播人间。
+        </p>
+		</view>
+    <view class="product-progress">
+        <p>“感知爱，传递爱”---2018世纪阳光慈善募捐！</p>
+		</view>
+    <view>
+        <ul class="moneylist">                       
+          <li><strong><b>{{info.sum_amount}}</b>元</strong><span>已捐金额</span></li>
+          <li><strong><b>{{info.count_num}}</b>份</strong><span>累计爱心</span></li>     
+        </ul>          	
+    </view>
+    <view class="blank"></view>
+    <view class="rescuecon">
+        <p>
+        西厢房乡建联合机构，世纪阳光基金2018慈善募捐暨世纪阳光基金在新架构，新组织下提出“感知爱，传递爱”的新愿景与新目标！
+        </p> 
+        <p>
+        为世纪阳光基金会的可持续发展募集善款，为践行“感知爱，传递爱”的发展目标，诚邀各位共同构建一个充满爱的平台，让西厢房乡建联合机构的每一位员工都能通过这个平台，学会如何感知到身边同事的爱，学会如何善于表达爱以及传递这份爱！只有这样，我们才能更好的践行“敬天爱人，自强不息”的企业核心价值观，只有这样，我们才能不忘“帮农民致富，助乡村振兴”的企业初心，并实现我们的企业愿景“创造一个自然和谐，健康幸福的人身体验”！
+        </p>
+        <view class='online'></view>
+        <text class='bold'>活动对象：</text>  
+        <p>西联机构全体员工</p>
+        <view class='online'></view>
+        <text class='bold'>活动时间与地点：</text>
+        <p>2018.4.27 13:30至14:30 春天里会议室</p>
+        <view class='online'></view> 
+        <text class='bold'>主办方：</text> 
+        <p>世纪阳光基金会</p>
+        <view class='online'></view>
+        <view class="accessimg">
+            <text class='bold'>负责人：</text>
+            <p>
+              <image src="http://www.xxiangfang.com/data/uploads/2018/01/15/281835a5c9ff4baac3.jpg"/>
+              <span>黄焱（会长）</span>
+            </p> 
+           <p>
+              <image src="http://www.xxiangfang.com/data/uploads/2018/01/15/20180423102134.jpg" />
+              <span>刘文灼（副会长）</span>
+           </p>
+           <p>
+              <image src="http://www.xxiangfang.com/data/uploads/2018/01/15/138205a5c90cac8968.jpg"/>
+              <span>夏雪（财务）</span>
+           </p>
+           <p>
+              <image src="http://www.xxiangfang.com/data/uploads/2018/01/15/303965a5c5b8eb894d.jpg"/>
+              <span>余向阳（监事）</span>
+           </p>
+        </view> 
+        <view class='online'></view> 
+        <text class='bold'>活动及捐款方式：</text> 
+        <p>以员工自愿为原则进行募捐。募捐方式以现金及扫码捐助为主</p>
+        <!-- <view class='online'></view> 
+        <text class='bold'>活动具体流程:</text>
+        <p> 1、	主持人对应ppt简述世纪阳光初衷及发展历程</p> 
+        <p> 2、	主持人请原基金会秘书长吴银贵同志讲话并简述目前基金会资金情况</p> 
+        <p> 3、	主持人公布基金会新的组织架构、理念及运作方式</p> 
+        <p> 4、	感知爱、传递爱募捐活动开始 </p>
+        <p> 5、	整理汇总捐助金额 </p>          -->
+     </view>
+     <view class="blank"></view>
+     <view class="leaveword">
+			  <view class="leavwdtitle">
+				    <p>捐赠留言<b>({{info.count_num}})</b></p>      
+			  </view>
+        <view class="leaveword-box layout" wx:for='{{donationList}}' wx:for-index="index" wx:for-item="item"> 
+          <view class="lwordimg">
+            <image src="{{item.avatarurl}}" />
+          </view> 
+          <view class="lwordtxt"> 
+            <view class="lwtitle">
+            <b>{{item.p_name}}</b>
+            <em>支持{{item.act_amount}}元</em>
+            <span>{{item.dateline}}</span>
+            </view> 
+            <view class="lwcon">
+                {{item.content}}
+            </view>  
+          </view>
+        </view> 
+        <view  class="laoding" wx:if="{{last}}">上拉加载数据</view> 
+      </view>
+
+    <!--弹出模态框  -->
+    <form bindsubmit="submitForm" report-submit >
+      <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+        <view class="modal-dialog" wx:if="{{showModal}}">
+          <view class="modal-title">“感知爱，传递爱”---2018世纪阳光慈善募捐！</view>
+          <view class="modal-content">
+            <view class="modal-input">
+              <input  type="text" maxlength="10" name="data_name" class="input" placeholder="请输入捐赠人姓名"/>
+            </view>
+            <view class="modal-input">
+              <input  type="digit" maxlength="10" class="input" name="data_money" placeholder="请输入捐赠金额(元)" bindinput="checkDigit" value="{{money}}"/>
+            </view>
+            <view class="modal-input">
+              <textarea placeholder='请输入捐赠留言' name="data_content" fixed="true"></textarea>
+            </view>
+          </view>
+          <view class="modal-footer">
+            <button class="btn-cancel" bindtap="onCancel" >取消</button>
+            <button class="btn-confirm" form-type='submit'>确定</button>
+          </view>
+      </view>
+     </form>
+
+      <view class="glbtn" style="background-color:#fff;">
+			    <p class="layout">				  
+             <button bindtap="showDialogBtn">我要捐款</button>
+			    </p>                          
+		  </view>
+</view>

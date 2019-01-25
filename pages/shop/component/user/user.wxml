@@ -1,0 +1,106 @@
+<view class="main"> 
+    <view class="header">
+        <image src="{{thumb}}" class="thumb"></image>
+        <text class="nickname">{{nickname}}</text>
+        <text class="about">关于我们</text>
+    </view>
+    <view class="address-box">
+        <view class="address-manage">
+            <navigator url="/pages/shop/component/address/a">地址管理</navigator>
+        </view>
+        <view wx:if="{{hasAddress}}" class="address-list">
+            <view>{{address.name}}</view>
+            <view>{{address.phone}}</view>
+            <view>{{address.detail}}</view>
+        </view>
+    </view>
+    <view class="orders-box">
+        <view class="orders">我的订单</view>
+        <view class="zt">
+          <ul>
+            <li class="{{selected1?'on':'default'}}" bindtap="selected" id='1'>待付款</li>
+            <li class="{{selected2?'on':'default'}}" bindtap="selected" id='2'>待发货</li>
+            <li class="{{selected3?'on':'default'}}" bindtap="selected" id='3'>待收货</li>
+            <li class="{{selected4?'on':'default'}}" bindtap="selected" id='4'>待评价</li>
+            <li class="{{selected5?'on':'default'}}" bindtap="selected" id='5'>退货退款</li>
+          </ul>
+        </view>
+        <block wx:if="{{orders}}">
+          <block wx:for="{{orders}}" wx:key="{{index}}">
+            <view class="orders-list">
+              <!-- <view class="orders-number">订单编号：{{item.order_no}}</view> -->
+              
+                <!-- <view class="o-t-item">
+                  <view class="item-img"> 
+                  <image src="{{item2.img}}" /> 
+                  </view> 
+                  <view class="item-info"> 
+                      <text class="title">{{item2.goods_name}} </text> 
+                  </view> 
+                  <view class="item-pay"> 
+                    <p class="price"> ￥{{item2.goods_price}} </p> 
+                    <p class="nums">x{{item2.goods_nums}}</p> 
+                  </view> 
+                </view> -->
+                <view class='orderInfo'>
+                  <image src='../image/store_b.png' />
+                  <p>{{item.seller}}</p>
+                </view>
+                <block wx:for="{{item.goods}}" wx:for-item="item2">
+                <view class='shop_title'>
+                    <view class='cart-img'>
+                      <image src='{{item2.img}}' />
+                    </view>
+                    <view class='cart-pr'>
+                      <view class='float'>
+                        <text>{{item2.goods_name}}</text>
+                        <text class='order-f'>X {{item2.goods_nums}}</text>
+                      </view>
+                      <text class='gk' wx:if="{{item2.spec}}">规格：{{item2.spec}}</text>
+                      <view class='shop_top'>
+                        <p class='pay'>￥ {{item2.goods_price}}</p>
+                      </view>
+                    </view>
+                </view>
+                </block>
+                <view class='buy-single-row'>
+                  <text class='buy-single-left'>订单编号：</text>
+                  <text class='buy-single-right'>{{item.order_no}}</text>
+                </view>
+              
+            
+              <view class="o-total-price"> 
+                  <view class="cont"> 
+                  <!-- {{item.goods.length}} -->
+                    <span>共 <b>{{item.goods_num}}</b> 件,</span> 
+                    <span>合计: <b>￥ {{item.order_amount}}</b> </span> 
+                  </view> 
+              </view>
+              <view class="o-tab-btn"> 
+                <ul> 
+                  <li class="orders-btn" wx:if="{{orderType == 1}}" bindtap="orderDel" id="{{item.id}}" data-type="{{orderType}}"> 删除订单 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 1}}" bindtap="orderPay" id="{{item.id}}" data-type="{{orderType}}">去付款 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 2}}" bindtap="orderRefund" id="{{item.id}}"> 申请退款 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 3}}" bindtap="orderRefund" id="{{item.id}}"> 申请退款 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 3}}" bindtap="orderComplete" id="{{item.id}}" data-type="{{orderType}}"> 确认收货 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 4}}" bindtap="orderDel" id="{{item.id}}" data-type="{{orderType}}"> 删除订单 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 4}}" bindtap="orderRefund" id="{{item.id}}"> 申请退款 </li> 
+                  <li class="orders-btn" wx:if="{{orderType == 4}}" bindtap="orderComment" id="{{item.id}}" data-type="{{orderType}}">去评价</li>
+                  <block wx:if="{{orderType == 5}}">
+                    <li class="orders-btn" wx:if="{{item.status <6}}" >退款处理中</li>
+                    <li class="orders-btn" wx:if="{{item.status >5}}" >已退款</li>
+                  </block>
+                </ul> 
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:else>
+          <view class="notify">
+            <image src="/resources/images/dingdan.png" class="imgsss" />
+              {{orderMsg}}
+          </view>
+        </block>
+        
+    </view>
+</view>

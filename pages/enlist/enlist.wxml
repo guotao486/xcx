@@ -1,0 +1,130 @@
+<!--pages/enlist/enlist.wxml-->
+<view class="container edit_wrap">
+<form bindsubmit="submitForm" report-submit >
+  <view class="form_group">
+    <p class="p1">{{NAME}}</p>
+  </view>
+  <view class="form_group">
+    <image src="{{yuding}}" mode='aspectFill' class="imgyd"/>
+  </view>
+    <view class="form_group">
+        <text>姓  名：</text>
+        <input type="text" placeholder="请输入姓名" name="data_name" maxlength="20" value="{{U_msg.name}}" auto-focus/>
+    </view>
+    <view class="form_group">
+        <text>电  话：</text>
+        <input type="number" placeholder="请输入电话" maxlength="11" name="data_phone" value="{{U_msg.mobile}}" />
+    </view>
+<block wx:if="{{is_home!=1 && ACT_TYPE!='pack'}}">
+    <view class="form_group" wx:if="{{a_id!=192}}">
+        <text>参与人数：</text>
+        <input type="number" placeholder="请输入参与人数" name="data_num" value="" wx:if="{{a_id!=192}}"/>
+    </view>
+    <view class="form_group" wx:else>
+       <text wx:if="{{a_id==192}}">预缴定金：</text>
+        ￥{{unitPrice}}/人
+        <input name="data_num" value="1" style="display:none"/>
+    </view>
+ </block>
+<!--  pack套餐类型或众筹类型活动  -->
+    <block wx:if="{{is_home!=1 && (ACT_TYPE=='pack'||ACT_TYPE=='end_time_valid' ||ACT_TYPE=='zhongchou' ) }}">
+    <view class="form_group">
+        <text>套餐价格：</text>
+        <radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}" wx:for-index="indexx" >
+<block wx:if="{{indexx==0}}">
+<radio value="{{item.price}}" checked="checked"/>{{item.name}}:￥{{item.price}}
+</block>
+<block wx:if="{{indexx>=1}}">
+<radio value="{{item.price}}" />{{item.name}}:￥{{item.price}} 
+</block>
+</label>
+</radio-group>
+    </view>
+    </block>
+
+<block wx:if="{{is_home==1}}">
+     <view class="section">
+  <view class="section__title"></view>
+  <picker mode="date" value="{{date1}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChange">
+    <view class="form_group">
+        <text>住房时间：</text>
+        <text class="textss" style="width:460rpx;text-align:left;">{{date1}}</text>
+    </view>
+  </picker>
+  <picker mode="date" value="{{date2}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChangeTwo">
+    <view class="form_group">
+        <text>退房时间：</text>
+        <text class="textss" style="width:460rpx;text-align:left;">{{date2}}</text>
+    </view>
+  </picker>
+  <picker bindchange="bindPickerChange" value="{{room_num}}" range="{{array}}">  
+    <view class="form_group">
+        <text>订房数量：</text>
+    <text class="textss" style="width:460rpx;text-align:left;">{{array[room_num]}}  </text>
+    </view>  
+    </picker>
+<!--  ajax动态显示房间价格 -xzz0830  -->
+  <block wx:if="{{user_type!=3}}">
+    <view class="form_group">
+        <text>房费总额：</text>
+    <span style="color:red;">￥{{total_money}}</span>
+    <input hidden="true" type="text" name="total_money" value="{{total_money}}"/>
+    </view> 
+  </block>
+  
+  <!--代金券  -->
+  <view class="form_group">
+    <text>支付方式：</text>
+     <radio-group>
+        <label style="display: flex">
+    <radio bindtap='card_pay' data-id='1' value="1" checked='{{checked}}' />微信支付
+        </label>
+        <view hidden='{{card_hide}}'>
+        <label style="display: flex" >
+    <radio bindtap='card_pay' data-id='2' value="2"/>代金券支付
+        </label>
+        </view>
+    </radio-group>
+  </view>
+
+  </view>
+</block>
+
+<!--  众筹活动的套餐选择  -->
+  <block wx:if="{{is_home!=1 && ACT_TYPE=='zhongchou'}}">
+    <view class="form_group">
+        <a style="color:red;">*</a><text>邮寄地址：</text>
+        <input type="text" placeholder="请填写邮寄地址,必填项" name="data_remark" maxlength="100"  value=""/>
+    </view>
+  </block>
+  <block wx:if="{{is_home!=1 && ACT_TYPE!='zhongchou'}}">
+    <view class="form_group" wx:if="{{a_id!=192}}">
+        <text>备注信息：</text>
+        <input type="text" placeholder="备注信息" name="data_remark" maxlength="100"  value=""/>
+    </view>
+    <view class="form_group" wx:else>
+        <text>备注信息：</text>
+        <input type="text" style="display:none" placeholder="备注信息" name="data_remark" maxlength="100"  value="{{radioRemark}}" wx:if="{{a_id==192}}"/>
+        <radio-group class="radio-group" bindchange="radioChangeRemark">
+          <label style="display: flex">
+               <radio value="单间" checked="checked"/>单间（￥588/人）
+          </label>
+           <label style="display: flex">
+              <radio value="标间" />标间（2个人标间合住￥438/人）
+          </label>
+        </radio-group>
+    </view>
+  </block>
+    <view class="form_group">
+      <p class="tes11">注意：该订单付款成功后不可被取消修改，如若行程有变，请提前联系客服协商延期入住或退款事宜。</p>
+      </view>
+    <input hidden="true" name="kind" value="{{kind}}" />
+    <block wx:if="{{is_home==1}}">
+    <button class="save_btn" form-type="submit">立即预订</button>
+    </block>
+    <block wx:if="{{is_home==0}}">
+    <button class="save_btn" form-type="submit">确认参加</button>
+    </block>
+</form>
+</view>

@@ -1,0 +1,142 @@
+<import src="../../modal/modal.wxml" />
+
+<template is="modal" data="{{showModal}}"></template>
+<view class="container edit_wrap">
+<form bindsubmit="submitForm" report-submit >
+  <view class="form_group">
+    <p class="p1">{{NAME}}</p>
+  </view>
+  <view class="form_group">
+    <image src="{{yuding}}" mode='aspectFill' class="imgyd"/>
+  </view>
+   <view class='body'>
+     <view class="fb_component">
+      <i class="fbc_separatorHr"></i>
+     </view>
+
+     <view class='fb_group'>
+        <view class='fb_component'>
+           <ul class="information"> 
+              <li wx:if="{{form.name}}"> 
+                 <label>姓名<span class="fbc_required">*</span></label> 
+                 <input class="fbi_input" maxlength='20' name="data_name" type="text" value="{{U_msg.name}}"/>
+              </li>
+              <li wx:if="{{form.sex}}"> 
+                <label>性别<span class="fbc_required">*</span></label> 
+                <radio-group bindchange="radioSex">
+                <radio value="1" checked="checked"/>男
+                <radio value="2" checked=""/>女
+                </radio-group>
+              </li>
+              <li wx:if="{{form.mobile}}"> 
+                 <label>手机<span class="fbc_required">*</span></label> 
+                  <input class="fbi_input" maxlength='11' name="data_phone" type="number" value="{{U_msg.mobile}}"/>
+              </li> 
+              <li wx:if="{{form.company}}"> 
+                <label>公司<span class="fbc_required">*</span></label> 
+                <input class="fbi_input" maxlength='50' name="data_company" type="text"/>
+              </li> 
+              <li wx:if="{{form.position}}"> 
+                <label>职位<span class="fbc_required">*</span></label> 
+                <input class="fbi_input" maxlength='20' name="data_position" type="text"/>
+              </li>  
+              <li wx:if="{{form.num}}">
+                <label>人数<span class="fbc_required">*</span></label> 
+                <input class="fbi_input" maxlength='20' name="data_num" type="number" bindinput='setNum' value="{{data_num}}"/>
+              </li>
+           </ul>
+        </view>
+
+        <view class='fb_component' wx:if="{{form.purpose.display}}">
+           <p class="fbc_title">{{form.purpose.title}}<span class="fbc_required">*</span></p>
+           <view class='fbc_content'>
+             <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{form.purpose.list}}">
+             <text class='texts'>{{form.purpose.list[areaIndex]}}</text>
+             </picker>
+             <input hidden="{{needyx}}" class="fbi_input nessd" name="data_purpose" type="text" placeholder='{{form.purpose.placeholder}}'/>
+           </view>
+        </view> 
+
+        <view class='fb_component' wx:if="{{form.invoice}}">
+          <input class="hidden" name="data_invoice" value="{{flag_bill}}"/>
+           <p class="fbc_title">是否需要发票？<span class="fbc_required">*</span></p>
+           <view class='fbc_content'>
+            <radio-group bindchange="listenerRadioGroup">
+              <label wx:for-items="{{array}}">
+                  <radio value="{{item.name}}" checked="{{item.checked}}" bindtap="checked"/>{{item.value}}
+              </label>
+            </radio-group>
+           </view>
+        </view>
+        <view class="fb_component {{checked?'':'hidden'}}">
+           <p class="fbc_title">发票信息<span class="fbc_required">*</span></p>
+           <p class="fbc_describe">请务必勾选四个选项后填写，并且完整填写每项内容，谢谢。</p>
+           <view class='fbc_content'>
+             <checkbox-group>
+              <label class="checkbox">
+                <checkbox value="" checked="{{showView}}" bindtap="onChangeShowState"/>税号
+              </label>
+              <input maxlength='20' name="duty_paragraph" class="inputn {{showView?'':'hidden'}}" type="text"/>
+              <label class="checkbox">
+                <checkbox value="" checked="{{showView1}}" bindtap="onChangeShowState1"/>公司地址（寄送地址及收件人）
+              </label>
+              <input maxlength='50' name="address" class="inputn {{showView1?'':'hidden'}}"  type="text"/>
+              <label class="checkbox">
+                <checkbox value="" checked="{{showView2}}" bindtap="onChangeShowState2"/>帐号
+              </label>
+              <input maxlength='50' name="account" class="inputn {{showView2?'':'hidden'}}"  type="text"/>
+              <label class="checkbox">
+                <checkbox value="" checked="{{showView3}}" bindtap="onChangeShowState3"/>开户行
+              </label>
+              <input maxlength='50' name="bank" class="inputn {{showView3?'':'hidden'}}"  type="text"/>
+             </checkbox-group>
+           </view>
+        </view>
+        <view class='fb_component' wx:if="{{form.additional}}">
+           <input class="hidden" name="data_additional" value="{{additional}}"/>
+           <p class="fbc_title">{{form.additionalTitle}}<span class="fbc_required">*</span></p>
+           <view class='fbc_content'>
+            <radio-group bindchange="radioAdditional">
+            <label wx:for-items="{{additionals}}">
+                  <radio value="{{index+1}}" checked="{{item.checked}}" />{{item.title}}
+            <block wx:if="{{item.remark!=''}}">
+            ({{item.remark}})
+            </block>
+            </label>
+            </radio-group>
+           </view>
+        </view>
+        <!--套餐-->
+         <view class='fb_component' wx:if="{{form.typeprice}}">
+         <input class="hidden" name="data_Enlist" value="{{enlist_type}}"/>
+           <p class="fbc_title">{{form.typePriceTitle}}<span class="fbc_required">*</span></p>
+           <view class='fbc_content'>
+            <radio-group bindchange="radioEnlist">
+              <label wx:for-items="{{type_price}}">
+                    <radio value="{{index+1}}" checked="{{item.checked}}" disabled='{{item.disabled}}' />{{item.title}}
+                <block wx:if="{{item.remark!=''}}">
+                ({{item.remark}})
+                </block>
+              </label>
+            </radio-group>
+           </view>
+        </view>
+        <block wx:if="{{form.totalMoney}}">
+          <view class="fb_component">
+              <text>总价：</text>
+          <span style="color:red;">￥{{total_money}}</span>
+          <input hidden="true" type="text" name="total_money" value="{{total_money}}"/>
+          </view> 
+        </block>
+        <view class="form_group" wx:if="{{form.tips}}">
+          <p class="tes11">{{form.tipsText}}</p>
+        </view>
+     </view>
+     <view class="fb_component">
+      <i class="fbc_separatorHr"></i>
+     </view>
+   </view>
+    <input hidden="true" name="kind" value="2" />
+    <button class="save_btn" form-type="submit">确认参加</button>
+</form>
+</view>

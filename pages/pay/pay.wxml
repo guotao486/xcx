@@ -1,0 +1,41 @@
+<import src="../../modal/modal.wxml" />
+
+<template is="modal" data="{{showModal}}"></template>
+<view class="container edit_wrap">
+<form bindsubmit="submitForm" report-submit >
+  <view class="form_group">
+    <p class="p1">{{NAME}}</p>
+  </view>
+  <view class="form_group">
+    <image src="{{yuding}}" mode='aspectFill' class="imgyd"/>
+  </view>
+   <view class='body'>
+     <view class="fb_component">
+      <i class="fbc_separatorHr"></i>
+     </view>
+
+     <!--姓名  -->
+     <view class='fb_group'>
+        <view class='fb_component'>
+           <ul class="information"> 
+              <li> 
+                 <label>金额<span class="fbc_required">*</span></label> 
+                 <input class="fbi_input" maxlength='20' name="price" type="digit"/>
+              </li>
+              <li> 
+                 <label>手机<span class="fbc_required">*</span></label> 
+                  <input class="fbi_input" maxlength='11' name="phone" type="number"/>
+              </li> 
+           </ul>
+        </view>
+        <view class="form_group">
+          <p class="tes11">注意：该订单付款成功后不可被取消修改，如有问题，请提前联系客服协商。</p>
+        </view>
+     </view>
+     <view class="fb_component">
+        <i class="fbc_separatorHr"></i>
+     </view>
+   </view>
+    <button class="save_btn" form-type="submit">确认参加</button>
+</form>
+</view>

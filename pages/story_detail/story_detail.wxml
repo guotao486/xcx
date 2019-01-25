@@ -1,0 +1,122 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+<view class="act-cover2">
+<!--  页面加载中loading  -->
+<loading wx:if="{{text}}">加载中</loading>
+<block wx:if="{{hidden}}">
+    <view class="entry_title">{{story_msg.art_title}}</view>
+      <block wx:if="{{story_msg.art_id!=763}}">
+        <view class="times">发表时间：{{story_msg.pub_time}}</view>
+      </block>
+    <template is="wxParse" data="{{wxParseData:story.nodes}}"/>
+<!--  乡贤活动专属报名通道  -->
+      <block wx:if="{{story_msg.art_id==763}}">
+        <navigator url='../SelectCate/SelectCate'>
+        <button class='ar_book'>立即报名</button>
+        </navigator>
+      </block>
+<!--广告位  -->
+<block wx:if="{{ad!='isNull' && story_msg.art_id!=763}}">
+<view class='title-hrs'><p>{{ad.ad_content}}</p></view>
+<view class='commentnew'>
+  <navigator url="{{ad.ad_url}}">
+    <image src="{{ad.ad_file}}" />
+  </navigator>
+</view>
+<!--  文章、民宿加盟链接  -->
+<!-- <navigator url='/pages/upload_art/upload_art'>民宿内容推广，请点击此处</navigator>
+<navigator url='/pages/upload_home/upload_home'>精品民宿加盟，请点击此处</navigator> -->
+</block>
+
+
+<!--  文章评论  -->
+<view class="title-hr"><p>点评</p></view>
+        <view class="comment-new">
+      <block wx:if="{{story_comment!='暂无评论~'&&story_comment!=undefined}}">
+         <block wx:for="{{story_comment}}" wx:for-item="comment" >
+          <view class="wrap"> 
+           <view class="public-comment-show clearfix"> 
+
+            <view class="pcs-left"> 
+            <a href="javascript:;"><image class="pcs-headimg" src="{{comment.avatarurl}}" /></a> 
+            </view> 
+            <view class="pcs-right"> 
+            <view class="pcs-right-htop"> 
+              <a class="anickname" >{{comment.username}}</a> 
+              <span class="spandate">{{comment.pub_time}}</span> 
+            </view> 
+            <text class="pmainContent">{{comment.content}}</text> 
+          <a class="reply" bindtap="reply" data-cid="{{comment.c_id}}">回复</a>
+          <a class="reply" wx:if="{{comment.uid==comment.login_uid}}" bindtap="del" data-cid="{{comment.c_id}}">删除</a>
+          <!--  点击回复，展示以下回复form  -->
+          <view wx:if="{{comment.c_id==reply_id}}" hidden="{{reply}}" class="reply_box">
+          <form bindsubmit="commentForm" report-submit >	
+            <textarea name="evaContent" maxlength="50" value="回复 {{comment.username}}:" class="textarea" /> 
+        <input hidden="true" name="comment_pid" value="{{comment.c_id}}" />
+        <input hidden="true" name="comment_user" value="回复 {{comment.username}}:" />
+            <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+              <button class="save_btn"  hidden="{{fla}}">发送中</button>
+          </form>
+          </view>
+            </view>
+           </view> 
+          </view>
+         </block>
+        <a class="goods" bindtap="bindDownLoad">查看更多</a>
+         <form bindsubmit="commentForm2" report-submit >	
+            <textarea  name="evaContent" maxlength="50" placeholder="" class="textarea" /> 
+        <input hidden="true" name="comment_pid" value="0" />
+            <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+              <button class="save_btn"  hidden="{{fla}}">发送中</button>
+          </form>
+       </block>
+       <block wx:else>
+        <!--这里单独写一个发表评论功能，与上面【回复、删除和展示评论区分开】-->
+       <form bindsubmit="commentForm3" report-submit >	
+            <textarea  name="evaContent" maxlength="50" placeholder="" class="textarea" /> 
+        <input hidden="true" name="comment_pid" value="0" />
+            <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+              <button class="save_btn"  hidden="{{fla}}">发送中</button>
+          </form>
+       </block>
+        </view>
+</block>
+<!--  评论结束  -->
+<view class='paddingbottom'></view>
+</view>
+
+<!-- <view class="footer-tabbar"> 
+   <view class="weui_tabbar"> 
+    <navigator url="../index/index" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+     <view class="weui_tabbar_icon"> 
+      <image class="select-icon" src="../../resources/images/ic_home.png" /> 
+     </view> 
+      <p class="weui_tabbar_label"><span slot="label">乡居体验</span></p> 
+     </navigator> 
+     <navigator url="../homelist/homelist" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+     <view class="weui_tabbar_icon"> 
+      <image class="select-icon" src="../../resources/images/ic_find_selected.png" /> 
+     </view> 
+      <p class="weui_tabbar_label"><span slot="label">发现</span></p> 
+     </navigator> 
+      <navigator url="../index/index" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+     <view class="weui_tabbar_icon"> 
+      <image class="select-icon" src="../../resources/images/ic_win.png" /> 
+     </view> 
+      <p class="weui_tabbar_label"><span slot="label">民宿预订</span></p> 
+     </navigator> 
+     <navigator url="../villagelist/villagelist" class="weui_tabbar_item weui_bar_item_on" open-type="switchTab"> 
+     <view class="weui_tabbar_icon"> 
+      <image class="select-icon" src="../../resources/images/ic_listing.png" /> 
+     </view> 
+      <p class="weui_tabbar_label"><span slot="label">最美乡村</span></p> 
+     </navigator> 
+    <navigator url="../me/me" class="weui_tabbar_item" open-type="switchTab"> 
+     <view class="weui_tabbar_icon"> 
+      <image class="select-icon" src="../../resources/images/ic_user.png" /> 
+     </view> 
+     <p class="weui_tabbar_label"> <span slot="label">我</span></p> 
+     </navigator> 
+   </view> 
+  </view> -->

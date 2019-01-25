@@ -1,0 +1,141 @@
+<view class="main">
+    <navigator url="../address/address">
+        <view wx:if="{{hasAddress}}" class="orders-address">
+            <text class="orders-address-name">收货人: {{address.name}}</text>
+            <text class="orders-address-phone">电话: {{address.phone}}</text>
+            <view class="orders-address-detail">{{address.detail}}</view>
+        </view>
+        <view wx:else class="orders-no-address">添加收货地址</view>
+    </navigator>
+    
+      <!-- <view wx:if="{{hasAddress}}" class="orders-address" bindtap="address">
+        <text class="orders-address-name">收货人: {{address.name}}</text>
+        <text class="orders-address-phone">电话: {{address.phone}}</text>
+        <view class="orders-address-detail">{{address.detail}}</view>
+      </view> -->
+   
+    <!-- 商铺订单结算 -->
+    <block wx:for="{{list}}" wx:for-index="sidx" wx:for-item="seller">
+      <view class='order-order'>
+        <view class='orderInfo'>
+          <text>商家</text>
+          <p>{{seller.true_name}}</p>
+        </view>
+        <!-- 相同店铺 产品 -->
+        <view class='shop'>
+          <view class='shop_title' wx:for="{{seller.goods}}" wx:for-index="gidx" wx:for-item="goods">
+            <view class='cart-img'>
+              <image src='{{goods.image}}' />
+            </view>
+            <view class='cart-pr'>
+              <view class='float'>
+                <text>{{goods.name}}</text>
+                <text class='order-f'>X {{goods.num}}</text>
+              </view>
+              <view class='shop_top'>
+                <p class='pay'>￥ {{goods.price}}</p>
+              </view>
+            </view>
+          </view>
+          <view class='shop_title' wx:for="{{seller.product}}" wx:for-index="pidx" wx:for-item="products">
+            <view class='cart-img'>
+              <image src='{{products.image}}' />
+            </view>
+            <view class='cart-pr'>
+              <view class='float'>
+                <text>{{products.name}}</text>
+                <text class='order-f'>X {{products.num}}</text>
+              </view>
+              <text class='gk'>规格：{{products.spec}}</text>
+              <view class='shop_top'>
+                <p class='pay'>￥ {{products.price}}</p>
+              </view>
+            </view>
+          </view>
+          <view class='buy-single-row'>
+            <text class='buy-single-left'>配送方式</text>
+            <text class='buy-single-right' wx:if="{{seller.delivery=='0.00'}}">{{seller.del_text}}</text>
+            <text class='buy-single-right' wx:elif="{{seller.delivery=='0'}}">快递  免费</text>
+            <text class='buy-single-right' wx:else>快递  {{seller.delivery}}</text>
+          </view>
+          <view class='buy-single-row' wx:if="{{seller.promotion}}">
+            <text class='buy-single-left'>活动</text>
+            <text class='buy-single-right'>{{seller.promotion}}</text>
+          </view>
+          <view class='buy-single-row'>
+            <input placeholder='给卖家留言' bindinput='orderContent' id="{{seller.id}}"/>
+          </view>
+        </view>
+
+        <!-- <view class='shop'>
+          <view class='shop_title'>
+            <view class='cart-img'>
+              <image src='https://wen.xxiangfang.com/upload/2018/08/24/20180824031748434.png' />
+            </view>
+            <view class='cart-pr'>
+              <view class='float'>
+                <text>家常菜家常菜家常菜</text>
+                <text class='order-f'>X 1</text>
+              </view>
+              <text class='gk'>规格：0.5</text>
+              <view class='shop_top'>
+                <p class='pay'>￥ 65.00</p>
+              </view>
+            </view>
+          </view>
+          <view class='buy-single-row'>
+            <text class='buy-single-left'>配送方式</text>
+            <text class='buy-single-right'>快递  25元</text>
+          </view>
+          <view class='buy-single-row'>
+            <text class='buy-single-left'>运费险</text>
+            <text class='buy-single-right'>卖家送,确认收货前退货可赔</text>
+          </view>
+          <view class='buy-single-row'>
+            <input placeholder='给卖家留言：填写内容已和卖家协商确认  (选填)'/>
+          </view>
+        </view> -->
+
+        <!--店铺合计  -->
+        <view class='buy-single-row margio'>
+          <view class='line'>
+              <text>共 {{seller.num}} 件 ,</text>
+              <text class='hj'>合计：</text>
+              <text class='price'>￥{{seller.price}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  
+     <!--总计 -->
+     <view class='orders-footer'>
+       <text>共 {{num}} 件，总金额</text>
+       <text class='prices'>￥{{total}}</text>
+        <view class="orders-footer-btn" bindtap="toPay">去付款</view>
+     </view>
+
+
+
+    <!-- <view class="orders-box">
+        <view wx:for="{{orders_goods}}" wx:key="index" class="orders-list">
+            <image class="orders-thumb" src="{{item.image}}"></image>
+            <view class="orders-pro-name">{{item.title}}</view>
+            <view class="orders-pro-price">￥{{item.price}}</view>
+            <view class="orders-count-num">×{{item.num}}</view>
+        </view>
+
+        <view wx:for="{{orders_products}}" wx:key="index" class="orders-list">
+            <image class="orders-thumb" src="{{item.image}}"></image>
+            <view class="orders-pro-name">{{item.title}}</view>
+            <view class="orders-pro-price">￥{{item.price}}</view>
+            <view class="orders-pro-price" wx:if="{{item.spec}}">规格:{{item.spec}}</view>
+            <view class="orders-count-num">×{{item.num}}</view>
+        </view>
+    </view> -->
+
+    <!-- <view class="orders-footer">
+        <view class="orders-footer-total">商品合计：￥{{total}}</view>
+        <view class="orders-footer-total2">运费：￥{{total}}</view>
+        <view class="orders-footer-btn" bindtap="toPay">去付款</view>
+    </view> -->
+</view>

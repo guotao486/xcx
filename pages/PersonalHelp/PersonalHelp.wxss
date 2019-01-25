@@ -1,0 +1,340 @@
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+.ban {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height:420rpx;
+}
+.ban image {
+    width: 100%;
+}
+.banstate {
+    position: absolute;
+    left: 0;
+    top: 30rpx;
+    width: 130rpx;
+    height: 60rpx;
+    border-radius: 0 30rpx 30rpx 0;
+    background-color: #fc9035;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 56rpx;
+    text-align: center;
+}
+.ban p {
+    position: absolute;
+    right: 4%;
+    bottom: 20px;
+    background-size: 168rpx 48rpx;
+}
+.ban p span {
+    width: 48rpx;
+    height: 48rpx;
+    text-align: center;
+    line-height: 48rpx;
+    color: #fff;
+    font-size: 22rpx;
+    }
+.ban p strong {
+    display: inline-block;
+    width: 110rpx;
+    text-align: center;
+    line-height: 48rpx;
+    font-weight: normal;
+    padding-left: 10rpx;
+    color: #fff;
+    font-size: 28rpx;
+}
+.attention {
+    padding: 16rpx 3%;
+    background-color: #f5f4f4;
+}
+.attention p {
+    color: #ff9933;
+    font-size: 28rpx;
+    line-height: 1.5;
+}
+.attention p image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-top: 8rpx;
+    margin-right: 10rpx;
+}
+.product-progress {
+    margin: 0 3%;
+}
+.product-progress p {
+    display:block;
+    padding-top: 30rpx;
+    line-height: 48rpx;
+    color: #333;
+    font-size: 32rpx;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.moneylist {
+    display: flex;
+    margin: 0 auto;
+    padding: 20rpx 0;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+.moneylist li {
+    flex: 1;
+    border-right: 1px solid #efefef;
+    text-align: center;
+}
+.moneylist li strong {
+    display: block;
+    color: #f98e29;
+    font-size: 22rpx;
+    font-weight: normal;
+}
+.moneylist li strong b {
+    font-size: 28rpx;
+    margin-right: 4rpx;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.moneylist li span {
+    display: block;
+    color: #999;
+    text-align: center;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.blank {
+    height: 20rpx;
+    background-color: #f5f4f4;
+}
+.rescuecon {
+    padding: 30rpx 3%;
+}
+.rescuecon .cont1 {
+    height: auto;
+    overflow: hidden;
+}
+.rescuecon p {
+    font-size:24rpx;
+    color:#666;
+    line-height:2;
+    overflow:hidden;
+    width:100%;
+    display:block;
+    padding:5rpx 0;
+}
+.rescuecon text {
+    font-size:24rpx;
+    color:#666;
+    line-height:2;
+    overflow:hidden;
+    width:100%;
+    display:block;
+    padding:5rpx 0;
+}
+.rescuecon .bold{
+  font-weight: 700;
+}
+.accessimg p{
+  display:inline;
+  padding-left:65rpx;
+}
+.accessimg image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+.accessimg span {
+    position: relative;
+    top: -20px;
+    left: 10px;
+    font-size:24rpx;
+    color:#666;
+}
+.online{
+    border-bottom: 1px solid #ececec;
+    margin: 16rpx 0;
+}
+.leaveword {
+    position: relative;
+    background-color: #fff;
+    padding-bottom:80rpx;
+}
+.leaveword .leavwdtitle {
+    padding: 0 3%;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+}
+.leaveword .leavwdtitle p {
+    color: #333;
+    font-size: 30rpx;
+}
+.leaveword .leavwdtitle p b {
+    color: #ff9933;
+}
+.leaveword .leaveword-box {
+    padding: 30rpx 3%;
+    border-top: 1px solid #f5f5f5;
+}
+.leaveword .lwordimg {
+    float: left;
+    width: 80rpx;
+    height: 80rpx;
+    position: relative;
+}
+.leaveword .lwordimg image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+}
+.leaveword .lwordtxt {
+    margin-left: 100rpx;
+}
+.leaveword .lwordtxt .lwtitle {
+    font-size: 28rpx;
+    color: #333;
+    padding-top: 10rpx;
+    display: flex;
+    align-items: center;
+}
+.leaveword .lwordtxt .lwtitle em {
+    margin-left: 10rpx;
+    color: #ff9933;
+    flex: 1;
+}
+.leaveword .lwordtxt .lwtitle span {
+    float: right;
+    font-size: 24rpx;
+    color: #999;
+}
+.leaveword .lwordtxt .lwcon {
+    font-size: 24rpx;
+    color: #333;
+    margin-top: 20rpx;
+    word-break: break-all;
+}
+.glbtn {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    border-top: 1px solid #e5e5e5;
+}
+.glbtn p {
+    font-size: 28rpx;
+    color: #333;
+    text-align:center;
+}
+.glbtn button {
+    color:#fff;
+    text-align:center;
+    width:100%;
+    height:80rpx;
+    line-height:80rpx;
+    font-size:28rpx;
+    font-weight:normal;
+    display:block;
+    padding:0;
+    background:#343434;
+    border-radius:0px;
+    border:0 none;
+}
+
+/*弹出模态框  */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  width:95%;
+  overflow:hidden;
+  position:fixed;
+  top:25%;
+  left:0;
+  z-index:9999;
+  background:#f9f9f9;
+  margin:-180rpx 20rpx;
+  border-radius:36rpx;
+}
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 26rpx;
+  color: #030303;
+  text-align: center;
+}
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  margin-bottom:10px;
+}
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+.modal-input textarea{
+  text-indent:20rpx;
+  padding-top:20rpx;
+} 
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  position: relative;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 0;
+}
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+  position: relative;
+  border: none;
+}
+.laoding{
+  text-align:center;
+  line-height:50rpx;
+  color:#666666;
+  background:#f5f4f4;
+  padding-bottom:20rpx;
+  font-size:24rpx;
+}

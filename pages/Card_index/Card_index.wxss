@@ -1,0 +1,66 @@
+/* pages/Card_me/Card_me.wxss */
+page{
+  background-color:#f8f8f8;
+}
+.content{
+  background-color:#fff;
+  width:100%;
+  margin-top:20rpx;
+  padding:20rpx 0;
+}
+.post{
+  margin-left:45rpx;
+}
+.post image{
+  width:70rpx;
+}
+.post text{
+  position:relative;
+  top:-14rpx;
+  color:#595959;
+  font-size:30rpx;
+  left:10px;
+  line-height:80rpx;
+  font-weight: bold;
+}
+.post .float{
+  float: right;
+  left: 0;
+  font-size:24rpx;
+  color:#586b95;
+}
+.bgms{
+  margin:0 15rpx;
+}
+.djjs image{
+  width: 100%;
+}
+.djjs .online{
+  border-bottom:1px solid #ccc;
+  margin:10rpx 0;
+  opacity: 0.5
+}
+.postw{
+  margin-left:45rpx;
+  height:70rpx;
+  line-height:70rpx;
+}
+.postw image{
+  width:70rpx;
+}
+.postw text{
+  position:relative;
+  top:-22rpx;
+  color:#595959;
+  font-size:30rpx;
+  left:10px;
+  line-height:80rpx;
+  font-weight: bold;
+}
+.postw .floatw{
+  float: right;
+  left:-10rpx;
+  top:-3rpx;
+  font-size:24rpx;
+  color:#586b95;
+}

@@ -1,0 +1,7 @@
+<!--pages/success/success.wxml-->
+<view class="zfcg">
+<image src="../../resources/images/zfcg.png" class="zfcgimg"></image>
+<view class="zfcgtext"><block wx:if="{{kind==1}}">恭喜您，房间预订成功</block></view>
+<view class="zfcgtext"><block wx:if="{{kind==2}}">恭喜您，活动报名成功</block></view>
+</view>
+<button class="save_btn" bindtap="tapName">确认</button>

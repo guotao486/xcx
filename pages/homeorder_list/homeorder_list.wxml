@@ -1,0 +1,83 @@
+<!--状态栏  -->
+<view class="zt">
+   <ul>
+     <li class="{{selected?'on':'default'}}" bindtap="selected">我的订单</li>
+     <li class="{{selected1?'on':'default'}}" bindtap="selected1">待付款</li>
+     <li class="{{selected2?'on':'default'}}" bindtap="selected2">已完成</li>
+     <li class="{{selected3?'on':'default'}}" bindtap="selected3">待评价</li>
+   </ul>
+</view>
+
+<view class="account_index my_project account_mod"> 
+<block wx:if="{{homeorderList!='暂无数据'}}">
+   <ul>  
+<block wx:for="{{homeorderList}}" wx:for-item="homeorderList">
+    <li> 
+     <view class="webkit-box"> 
+      <view class="pic_show mr5"> 
+ <navigator url="../home_detail/home_detail?home_id={{homeorderList.s_id}}">
+       <image src="{{homeorderList.pic_url}}"/>
+ </navigator>
+      </view> 
+      <view class="details"> 
+ <navigator url="../home_detail/home_detail?home_id={{homeorderList.s_id}}">
+       <text class="info_name">{{homeorderList.goodsname}}</text> 
+ 
+       <view class="info_all"> 
+        <view class="info_group"> 
+         <label class="label_l">入住天数：</label>
+         <span class="f_money">{{homeorderList.total_days}}</span>  <label class="label_l" style="padding-left:10px">房间数：</label>
+         <span class="f_money">{{homeorderList.total_room}}</span> 
+        </view> 
+      <view class="info_group"> 
+         <label class="label_l">金额：</label>
+         <span class="f_money">{{homeorderList.order_amount}}</span> 
+        </view> 
+        <view class="info_group"> 
+         <label class="label_l">状态：</label> 
+         <span class="label_r"> {{homeorderList.order_status}} </span> 
+        </view> 
+       </view> 
+</navigator>
+      </view> 
+
+<block wx:if="{{homeorderList.order_status=='支付成功'}}">
+      <view class="operating f_r webkit-box" style="line-height:30px;">
+    <block wx:if="{{selected3!=true&&!(homeorderList.has_qrcode==1)}}">
+      <navigator url="../homeorder_detail/homeorder_detail?order_id={{homeorderList.order_id}}">
+        <a href="" class="pay theme_color">查看详情</a>
+      </navigator>
+    </block>
+    <block wx:if="{{selected3!=true&& homeorderList.has_qrcode==1}}">
+      <navigator url="../homeorder_detail/homeorder_detail?order_id={{homeorderList.order_id}}&hasGift=1">
+        <a href="" class="pay theme_color">您有一张优惠券，点击查看</a>
+      </navigator>
+    </block>
+    <a data-oid="{{homeorderList.order_id}}" class="pay theme_color" bindtap="refund">申请退款</a>
+    <block wx:if="{{selected3==true}}">
+      <navigator url="../home_detail/home_detail?home_id={{homeorderList.s_id}}">
+        <a href="" class="pay theme_color">去评价</a>
+      </navigator>
+    </block>
+      </view>
+</block>
+<block wx:if="{{homeorderList.order_status=='等待支付'}}">
+      <view bindtap="pay_again" data-name="{{homeorderList.order_id}}" data-mobile="{{homeorderList.c_phone}}" data-goods="{{homeorderList.goodsname}}" data-days="{{homeorderList.total_days}}"  data-fee="{{homeorderList.order_amount}}" class="operating f_r webkit-box" style="line-height:30px;"> 
+          <a href="" class="pay bg_red">继续支付</a> 
+      </view>
+</block>
+
+     </view>
+     <view class="blank5"></view> 
+     </li> 
+</block>
+
+   </ul> 
+</block>
+<block wx:if="{{homeorderList=='暂无数据'}}">
+<view class="notify">
+   <image src="../../resources/images/dingdan.png" class="imgsss" />
+     {{homeorderList}}
+</view>
+</block>
+  </view>

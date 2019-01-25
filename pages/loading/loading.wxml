@@ -1,0 +1,9 @@
+<view class='contee'>
+  <image src='../../resources/images/loading_img.jpg' />
+  <view class='imgbtn'>
+    <text>一间西厢房，心安即吾乡</text>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='btn'>
+    开启乡居生活之旅
+    </button>
+  </view>
+</view>

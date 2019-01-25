@@ -1,0 +1,161 @@
+/* 发送验证码按钮隐藏，并展示倒数60s提示 */
+.hide{
+ display: none;
+  width:290rpx;
+  margin-left:180rpx;
+  font-size:14px;
+}
+.show{
+  display: block;
+  width:290rpx;
+  margin-left:180rpx;
+  font-size:14px;
+}
+.form_group{
+    display: flex;
+    flex-direction: row;
+    margin:20rpx;
+    line-height: 60rpx;
+}
+.form_group text{
+    width:160rpx;
+    font-size: 14px;
+    text-align: right
+}
+.form_group input,
+.form_group picker{
+    width:460rpx;
+    border:1px solid #ddd;
+    border-radius:8rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    padding:0rpx 20rpx;
+    font-size:14px;
+}
+.form_group button{
+    font-size:30rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    border:1px dotted #fff;
+    background:white;
+    padding:0rpx;
+    margin:0rpx;
+    outline:none;
+    color:#000;
+}
+.save_btn{
+    width:400rpx;
+    background:#343434;
+    font-size:32rpx;
+    color:#fff;
+    border-radius:0rpx;
+    margin-left:180rpx;
+}
+
+.user {
+  width: 725rpx;
+  background: #ffffff;
+  padding: 30rpx 25rpx 30rpx 0;
+  margin: 15rpx 0 0 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #dcdcdc;
+  box-shadow: 0 2px 5px #eeeeee;
+}
+.user .userinfo-avatar{
+  flex: 1;
+  display: inline-block;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 80rpx;
+}
+.user .user-info{
+  flex: 5;
+  text-align: left;
+  line-height:90rpx;
+}
+.user .user-info text{
+  display: block;
+}
+.user .user-info .userinfo-nickname{
+  padding: 8rpx 0 10rpx 0;
+  font-size: 30rpx;
+  color: #818A8F;
+}
+.user .user-info .edit{
+  font-size: 30rpx;
+  color: #bababa;
+  line-height: 34rpx;
+}
+.flex-wrp{
+  display: flex;
+}
+.flex-tab{
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.flex-item{
+  flex-grow: 1;
+  text-align: center;
+}
+.images{
+  margin:0 auto;
+  display:flex;
+}
+.aglin{
+  text-align:center;
+  margin:100px auto;
+  padding:10px;
+  line-height:25px;
+  font-size:18px;
+  color:#6c6c6c;
+}
+
+
+.footer-tabbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.weui_tabbar {
+    background-color: #fff;
+    display: flex;
+    position: absolute;
+    z-index: 500;
+    bottom: 0;
+    width: 100%;
+    height:50px;
+    border-top:1px solid #ccc;
+}
+.footer-tabbar .weui_tabbar_item {
+    text-decoration: none;
+    padding-top:5px;
+}
+.weui_tabbar_item {
+    display: block;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 7px 0 0;
+    -webkit-tap-highlight-color: transparent;
+}
+.weui_tabbar_icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+}
+.weui_tabbar_icon image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.footer-tabbar .weui_tabbar_label {
+    margin-bottom: 5px!important;
+    color: #888989!important;
+    margin-top: 2px;
+}
+.weui_tabbar_label {
+    text-align: center;
+    display:block;
+    font-size: 12px;
+}

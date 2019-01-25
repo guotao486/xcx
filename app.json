@@ -1,0 +1,94 @@
+{
+  "pages": [
+    
+    "pages/loading/loading",
+    "pages/pay/pay",
+    "pages/index/index",
+    "pages/home_detail/home_detail",
+    "pages/storylist/storylist",
+    "pages/homelist/homelist",
+    "pages/article_list/homelist/homelist",
+    
+    "pages/villagelist/villagelist",
+    "pages/calendar/calendar",
+    "pages/me/me", 
+    "pages/logs/logs",
+    "pages/bindMobile/bindMobile",
+    "pages/activity_detail/activity_detail",
+    "pages/enlist/enlist",
+    "pages/story_detail/story_detail",
+    "pages/village_detail/village_detail",
+    "pages/success/success",
+    "pages/order_list/order_list",
+    "pages/order_listdetail/order_listdetail",
+    "pages/homeorder_list/homeorder_list",
+    "pages/homeorder_detail/homeorder_detail",
+    "pages/contact_kefu/contact_kefu",
+    "pages/video/video",
+    "pages/SetInfo/SetInfo",
+    "pages/SelectCate/SelectCate",
+    "pages/collection/collection",
+    "pages/index2/index",
+    
+    "pages/teambuy/teambuy",
+    "pages/Card_coupons/Card_coupons",
+    "pages/Card_me/Card_me",
+    "pages/Card_index/Card_index",
+    "pages/PersonalHelp/PersonalHelp",
+
+    "pages/shop/component/index",
+    "pages/shop/component/address/address",
+    "pages/shop/component/cart/cart",
+    "pages/shop/component/details/details",
+    "pages/shop/component/details_share/details_share",
+    "pages/shop/component/orders/orders",
+    "pages/shop/component/user/user",
+    "pages/shop/component/shop_comment/shop_comment",
+
+    "pages/activity_enlist/activity_enlist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "西厢房旅居",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888989",
+    "selectedColor": "#343434",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "活动",
+        "pagePath": "pages/index/index",
+        "iconPath": "resources/images/ic_home.png",
+        "selectedIconPath": "resources/images/ic_home_selected.png"
+      },
+      {
+        "text": "亲子户外",
+        "pagePath": "pages/index2/index",
+        "iconPath": "resources/images/ic_listing.png",
+        "selectedIconPath": "resources/images/ic_listing_selected.png"
+      },
+      {
+        "text": "村宿",
+        "pagePath": "pages/storylist/storylist",
+        "iconPath": "resources/images/ic_win.png",
+        "selectedIconPath": "resources/images/ic_win_selected.png"
+      },
+      {
+        "text": "乡村共建",
+        "pagePath": "pages/villagelist/villagelist",
+        "iconPath": "resources/images/ic_find.png",
+        "selectedIconPath": "resources/images/ic_find_selected.png"
+      },
+      {
+        "text": "我",
+        "pagePath": "pages/me/me",
+        "iconPath": "resources/images/ic_user.png",
+        "selectedIconPath": "resources/images/ic_user_selected.png"
+      }
+    ]
+  }
+}

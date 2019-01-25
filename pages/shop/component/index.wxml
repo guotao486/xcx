@@ -1,0 +1,64 @@
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}"   bindscroll="scroll" class='scrollTop'>
+  <view class="main">
+      <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+          <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+              <swiper-item>
+                  <image src="{{item.img}}" class="slide-image" width="100%"/>
+              </swiper-item>
+          </block>
+      </swiper>
+      <!-- <view class="selected">
+          <view class="select-title">
+            <text>推荐专区</text>
+          </view>
+          <view class='newest-new'>
+            <block wx:for="{{commendGoods}}" wx:key="{{index}}">
+                <view class='newest-newlist'>
+                <navigator url="details/details?gid={{item.id}}">
+                  <image src='{{item.img}}'/>
+                  <text class='newlist_title'>{{item.sub_name}}</text>
+                  <text class='newlist_titles'>中秋特供</text>
+                  <text class='newlist_money'>￥{{item.sell_price}}</text>
+                </navigator>
+              </view>
+            </block>
+          </view>
+          <view class='banners'>
+            <navigator url=''>
+              <image src='image/wec-img1.jpg' />
+            </navigator>
+          </view>
+      </view> -->
+      <view class="newest">
+          <!-- <view class="newest-title">
+            <text>最近新品</text>
+          </view> -->
+          <view class="newest-box">
+            <block wx:for="{{newGoods}}" wx:key="{{index}}">
+              <view class="newest-list">
+                  <navigator url="details/details?gid={{item.id}}">
+                    <view class='newest-bg'>
+                      <image src="{{item.img}}"></image>
+                    </view>
+                    <text class='newest-t'>{{item.sub_name}}</text>
+                    <text class='newest-money'>￥{{item.sell_price}}</text>
+                    <text class='newest-tit'>{{item.description}}</text>
+                  </navigator>
+              </view>
+            </block>
+          </view>
+      </view>
+
+      <!--回到顶部  -->
+      <view class="com-widget-goTop" bindtap="goTop" wx:if="{{floorstatus}}">
+          <view class="icon-gotop">
+              顶部
+          </view>
+      </view>
+
+      <!-- 加载 -->
+      <view class='loading'>
+        <text>-------再逛逛，让我们更了解你-------</text>
+      </view>
+  </view>
+</scroll-view>

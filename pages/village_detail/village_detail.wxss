@@ -1,0 +1,378 @@
+page{
+  color: black;
+  font-family: '微软雅黑';
+  font-size: 28rpx;
+  background-color:#f7f7f7;
+  height: 100%;
+}
+.contents{
+  height:100%;
+}
+.container-fluidshow {
+  position: relative;
+  overflow:hidden;
+  margin-bottom:22rpx;
+  border-bottom:1px solid #e6e6e6;
+}
+swiper {
+  display:block;
+  height:420rpx;
+}
+.ar_coverpath image{
+  width: 100%;
+  height:420rpx;
+  display:block;
+}
+.dots{  
+  position:absolute;
+  bottom:20rpx;
+  right:30rpx;
+  letter-spacing:2rpx;
+  color:#fff;
+}  
+.provider_item_share{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top:25rpx;
+  right:30rpx;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 50rpx;
+}
+.village_detail_var{
+  padding:20rpx 30rpx;
+  background:#fff;
+}
+.village_detail_var image{
+  width:140rpx;
+  height:140rpx;
+  display:inline-block;
+  border-radius:50%;
+}
+.village_detail_var_tit{
+  position: relative;
+  top: -25rpx;
+  display:inline-block;
+  padding-left:40rpx;
+}
+.village_detail_var_tit text{
+  display: block;
+  padding-bottom: 10rpx;
+}
+.village_detail_var_tit p{
+  display: block;
+  color: #676767;
+  font-size:24rpx;
+}
+.village_detai_conter{
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  margin-bottom: 22rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+#inToView7{
+  margin-bottom: 0rpx;
+}
+.village_detai_dw{
+  padding: 10rpx 0;
+}
+.village_detai_dw image{
+  width: 38rpx;
+  height: 46rpx;
+}
+.village_detai_dw span{
+  font-size:24rpx;
+  margin-left:20rpx;
+  position:relative;
+  top:-12rpx;
+  letter-spacing:2rpx;
+  color:#676767;
+}
+.village_detai_js{
+  padding: 10rpx 0 30rpx;
+}
+.village_detai_js_tit{
+  font-size:30rpx;
+  letter-spacing:1rpx;
+  font-weight:bold;
+  color:#323232;
+}
+.village_detai_js_tdets{
+  font-size:26rpx;
+  line-height:45rpx;
+  color:#676767;
+  letter-spacing:1rpx;
+}
+.village_detai_js_wc image{
+  width: 100%;
+  height: 440rpx;
+  display: block;
+  border-radius: 10rpx;
+}
+.village_detai_js_wc text{
+  display: block;
+  padding:15rpx 0;
+  letter-spacing:2rpx;
+}
+.village_detai_js_wc p{
+  display: block;
+  color:#676767;
+  font-size: 24rpx;
+  letter-spacing: 2rpx;
+}
+.item-desch100{
+  color:#676767;
+  padding-bottom:10rpx;
+  font-size:24rpx;
+}
+.village_detai_js_wc .itemred{
+  font-size:24rpx;
+  color:red;
+}
+.map{
+  width: 100%; 
+  height: 500rpx;
+  margin-bottom: 10rpx;
+}
+.b_1{
+  display:inline;
+  font-size:24rpx;
+  color:#676767;
+}
+.b_2{
+  float:right;
+  font-size:24rpx;
+  color:#676767;
+}
+.reply{
+  color:#f62f40;
+  text-decoration:none;
+  float:right;
+  padding-left:15px;
+  padding-bottom:10px;
+}
+textarea {
+  border: #ccc solid 1px;
+  height: 120rpx;
+  padding: 10rpx;
+  color: #666;
+  line-height: 36rpx;
+  border-radius: 6rpx;
+  width: 96%;
+}
+.save_btn{
+  line-height:50rpx;
+  cursor:pointer;
+  color:#fff;
+  font-size:30rpx;
+  text-align:center;
+  padding:5px 20px;
+  border-radius:3px;
+  background:black;
+  width:180rpx;
+  float:right;
+  margin-top: 20rpx;
+  margin-bottom:5rpx;
+}
+.save_btn1{
+  line-height:50rpx;
+  cursor:pointer;
+  color:#fff;
+  font-size:30rpx;
+  text-align:center;
+  padding:5px 20px;
+  border-radius:3px;
+  background:black;
+  width:180rpx;
+  float:right;
+  margin-top: 20rpx;
+  margin-bottom:5rpx;
+}
+.village_detai_js_wc .goods{
+  color:#f62f40;
+  margin:30rpx 0rpx 50rpx;
+  width:100%;
+  height:100%;
+  justify-content:center;
+  text-align:center;
+}
+.public-comment-show{
+  width: 100%;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f5f5f5;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.pcs-left{
+  width: 80rpx;
+  margin-right: 40rpx;
+}
+.pcs-right-coment{
+  width: 100%;
+}
+.village_detai_js_wc .pcs-headimg{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+.pcs-right{
+    width: 85%;
+    padding-right: 20rpx;
+}
+.anickname{
+  color: #5cb975;
+  letter-spacing: 0;
+  line-height: 28rpx;
+}
+.spandate{
+  display: block;
+  font-size: 20rpx;
+  color: #999;
+  letter-spacing: 0;
+  line-height: 34rpx;
+}
+.p1{
+  font-weight:700;
+  font-size:28rpx;
+  margin: 20rpx 0;
+  display: block;
+}
+.click1{
+  position: relative;
+  left: 315rpx;
+  color:#12ADFF;
+  padding-bottom: 10rpx;
+  text-decoration: underline
+}
+.click{
+  position: relative;
+  left: 550rpx;
+  color:#12ADFF;
+  padding-bottom: 10rpx;
+  text-decoration: underline
+}
+.reply_box{
+  margin-top:50rpx;
+}
+.detail_share{
+  position:fixed;
+  z-index:300;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+.mask{
+  display: block;
+  position: absolute;
+  z-index: 21;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.65);
+}
+.mask-block_share{
+  position:absolute;
+  z-index:22;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#FFF;
+}
+.mask-block_shareimg{
+  display:flex;
+  padding:40rpx 20rpx;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
+}
+.vux-tab-item{
+  display:block;
+  flex:1;
+  width:100%;
+  height:100%;
+  text-align:center;
+}
+.vux-tab-item .share_btn{
+  line-height:36rpx;
+  padding: 0;
+  border-radius: 0rpx;
+  background: none;
+}
+.vux-tab-item .share_btn::after{
+  border: none;
+}
+.vux-tab-item image{
+  width:120rpx;
+  height:120rpx;
+}
+.vux-tab-item text{
+  display:block;
+  padding-top:10rpx;
+  font-size:24rpx;
+  color:#666;
+}
+.mask-block_share_btn{
+  height: 88rpx;
+  background: #fff;
+  padding:0;
+  border-radius:0rpx;
+  font-size:28rpx;
+  line-height:88rpx;
+  border-top: 1rpx solid #c2c3c4;
+  color:#666;
+}
+.mask-block_share_btn::after{
+  border: none;
+}
+.village_detai_js_tdets image{
+  width:100%;
+  height:440rpx;
+  padding:5rpx 0;
+}
+
+/* 置顶 */
+.vux-sticky {
+    width:100%;
+    z-index:18;
+    background: #fff;
+}
+.vux-sticky1 {
+    width:100%;
+    z-index:18;
+    background: #fff;
+    position: fixed;
+    top: 0px;
+}
+.nav{
+  box-shadow: 0rpx 2rpx 6rpx 2rpx #e1e1e1;
+  z-index: 10;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #323232;
+}
+.nav-box{
+  letter-spacing: 2rpx;
+  text-align: center;
+}
+.nav-box2{
+  color: #933130;
+  letter-spacing: 2rpx;
+  text-align: center;
+}
+.nav-box span{
+  line-height: 3;
+  font-size:26rpx;
+}

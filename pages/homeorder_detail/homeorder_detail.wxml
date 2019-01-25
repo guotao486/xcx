@@ -1,0 +1,59 @@
+<!--pages/order_listdetail/order_listdetail.wxml-->
+    <view class="ul_block ul_block_list">
+      <ul>
+        <li class="webkit-box">
+          <label class="input_lable mr10">商品名称:</label>
+          <view class="list_con">
+            <a href="" class="f_blue">{{order_msg.goodsname}}</a>
+          </view>
+        </li>
+        <li class="webkit-box ">
+          <label class="input_lable mr10">应付金额:</label>
+          <view class="list_con">
+            <span class="f_money">{{order_msg.order_amount}}</span>
+          </view>
+        </li>
+        <li class="textarea webkit-box">
+          <label class="input_lable mr10">收款情况:</label>
+          <view class="list_con">{{order_msg.order_status}}</view>
+        </li>
+        <li class="textarea webkit-box">
+          <label class="input_lable mr10">入住天数:</label>
+          <view class="list_con">{{order_msg.total_days}}</view>
+        </li>
+        <li class="textarea webkit-box">
+          <label class="input_lable mr10">入住时间:</label>
+          <view class="list_con">{{order_msg.start_time}}-{{order_msg.end_time}}</view>
+        </li>
+        <li class="webkit-box">
+          <label class="input_lable mr10">支付时间:</label>
+          <block wx:if="{{order_msg.order_status=='支付成功'}}">
+          <view class="list_con">{{order_msg.order_time}}</view>
+          </block>
+        </li>
+        <li class="webkit-box">
+          <label class="input_lable mr10">备注信息:</label>
+          <view class="list_con">{{qrcode_msg.remark}}</view>
+        </li>
+
+<block wx:if="{{hasGift==1}}">
+      <block wx:for="{{qrcode_msg}}" wx:for-item="qrcode_msg">
+            <li class="webkit-box">
+                <label class="input_lable mr10">优惠券内容:</label>
+                <view class="list_con">
+                {{qrcode_msg.qrcode_content}}
+                  <!--优惠劵  -->
+              <view class="pic_show mr5"> 
+                  <label class="input_lable mr10">优惠券二维码(状态：<span class="colors">{{qrcode_msg.status}}</span>)：</label>
+                  <image class="ims1" src="{{qrcode_msg.qrcode_url}}"/>
+              </view>
+      <block wx:if="{{qrcode_msg.status=='有效'}}">
+          <button class="btns1" data-id="{{qrcode_msg.order_id}}" data-qrcodeid="{{qrcode_msg.id}}" bindtap="use_qrcode">使用优惠券</button>
+      </block>
+                </view>
+            </li>
+      </block>
+    </block>
+
+      </ul>
+    </view>

@@ -1,0 +1,126 @@
+/* pages/SetInfo/SetInfo.wxss */
+page {
+    font-family: "微软雅黑 Regular","微软雅黑";
+    font-size: 32rpx;
+    background: #F0F0F0;
+    color: #3F3F3F;
+}
+.content {
+    width: 100%;
+    padding-bottom: 120rpx;
+}
+.contenter {
+    margin: 0 auto;
+}
+.lump{
+    background: #fff;
+    border-top: 1px solid #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+    padding: 10px;
+    position: relative;
+}
+.font12 {
+    font-size: 12px;
+    color: #656565;
+}
+p {
+    margin: 10px 0;
+    white-space: normal;
+    display: block
+}
+.ticket2 {
+    margin-top: 20px;
+}
+.ticket {
+    padding-right: 120px;
+    position: relative;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.ticket .left p {
+    margin-left:20rpx;
+}
+.aside {
+    text-align:right;
+    padding-right:20rpx;
+}
+.aside p {
+    font-size: 12px;
+    margin-top: 0;
+}
+.aside p span {
+    font-size: 14px;
+    color: orange
+}
+.s-title {
+    padding: 0 10px;
+    font-size: 14px;
+}
+.info-box {
+    background: #fff;
+    padding: 10px;
+}
+.fb_component {
+    width: 100%!important;
+    padding: 15rpx 20rpx;
+    box-sizing: border-box;
+}
+.fbc_separatorHr {
+    margin: 4rpx 20rpx;
+    border: 0;
+    border-top: 1px dashed #D3D3D3;
+    display:block;
+}
+.fbc_title{
+    font-size: 28rpx;
+    font-weight: normal;
+    margin-top: 8rpx;
+    color: #333;
+    width:100rpx;
+    display:inline-block;
+} 
+.fbc_required {
+    margin-left: 5px;
+    color: #DA2824;
+}
+.fbc_content {
+    width:82%;
+    float:right;
+}
+.fbi_input {
+    height: 100%;
+    padding: 10rpx;
+    background-color: transparent;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid #ccc
+}
+.fbc_describe{
+    margin-top: 4rpx;
+    color: #666;
+    display:block;
+    font-size: 24rpx;
+}
+label{
+  display:inline-block;
+  padding:0 10px;
+}
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 1000;
+    border-top: 1px solid #D8D8D8;
+}
+.btn2 {
+    background: #343434;
+    border-radius: 0rpx;
+    display: block;
+    color: #fff;
+    padding: 5rpx 20rpx;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 28rpx;
+}

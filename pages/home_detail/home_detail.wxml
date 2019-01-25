@@ -1,0 +1,303 @@
+<!-- 引入解析富文本html模板 -->
+<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+
+  <!-- banner -->
+  <scroll-view  scroll-y="true">
+    <swiper  catchtap="onSwiperTap" autoplay="auto" interval="3000" duration="500" current="{{swiperCurrent}}"  bindchange="swiperChange">
+        <block wx:for="{{home_pics}}"  wx:for-index="index">
+            <swiper-item>
+                <view class="ar_coverpath">
+                  <image data-posturl="{{home_pics[index]}}" src="{{home_pics[index]}}"  bindtap="previewImage" mode="aspectFill"/>
+              </view>
+            </swiper-item>
+        </block>
+    </swiper>
+     <!--  图片数  -->
+     <view class="dots">   
+         {{swiperIndex}}/{{home_pics.length}}
+      </view> 
+      <!--  房间收藏  -->
+      <text bindtap="{{bindCol}}" data-id="{{home_id}}" class="provider_item_collect" style="background-image:url('{{c_url}}')"></text>
+      <text bindtap="onChangeShowStates" data-id="{{home_id}}" class="provider_item_share" style="background-image:url('http://www.xxiangfang.com/data/uploads/2017/07/27/share.png')"></text>
+    </scroll-view>
+     
+    <!--民宿类型  -->
+    <view class='home_detail_contear'>
+       <view class='home_detail_tit'>
+        <text>西厢房-{{home_detail.brand}}->{{homes.s_title}}</text>
+        <block wx:if="{{user_type!=3}}">
+          <p>¥{{homes.price}}</p>
+        </block>
+        <block wx:if="{{user_type==3}}">
+          <p>¥{{homes.vip_price}}</p>
+        </block>
+         
+         <view class='home_detail_ul'>
+           <view class='home_detail_li'>
+              <image src='../../resources/images/icon_ms.png'/>
+              <text>{{home_detail.home_type}}</text>
+           </view>
+           <view class='home_detail_li'>
+              <image src='../../resources/images/icon_pp.png'/>
+              <text>宜住{{home_detail.person_num}}人</text>
+           </view>
+            <view class='home_detail_li'>
+              <image src='../../resources/images/icon_ch.png'/>
+              <text>共{{home_detail.bed_num}}张床</text>
+           </view>
+         </view>
+         <navigator url='../Card_me/Card_me'>
+            <view class='home_detail_kj'>
+               <view class='home_detail_kj_left'>
+                  <text>住宿优惠</text>
+                  <p>卡劵</p>
+               </view>
+               <view class='home_detail_kj_right'>
+                  ＞
+               </view>
+            </view>
+         </navigator>
+         <navigator url=''>
+            <view class='home_detail_gu'>
+                <view class='home_detail_kj'>
+                  <block wx:for="{{home_articles}}" wx:for-item="ART" wx:for-index="inde">
+                    <navigator url="../story_detail/story_detail?art_id={{ART.art_id}}">
+                      <view class='home_detail_gu_left'>
+                          <image src='../../resources/images/icon_book.png'/>
+                          <p>故事:</p>
+                          <text>{{ART.art_title}}</text>
+                      </view>
+                      <view class='home_detail_kj_right'>
+                          ＞
+                      </view>
+                    </navigator>
+                  </block>
+                </view>
+                
+            </view>
+         </navigator>
+       </view>
+      
+    </view>
+    
+    <!-- 介绍 -->
+    <view class='home_detail_contear'>
+       <view class='home_detail_tit'>
+           <text class='home_detail_js'>介绍</text>
+           <span><template is="wxParse" data="{{wxParseData:Homes_detail.nodes}}"/></span>
+           <span>{{homes.s_desc}}</span>
+       </view>
+    </view>
+
+    <!-- 位置 -->
+    <view class='home_detail_contear'>
+       <view class='home_detail_tit'>
+          <text class='home_detail_js'>位置导航</text>
+          <b class="home_detail_bb">房源位置：{{home_detail.v_address}}</b>
+          <map id="map" longitude="{{longitude2}}" latitude="{{latitude2}}" markers="{{markers2}}" bindtap='mapClick'  bindmarkertap="mapClick" scale="10" class='home_detail_map'/>
+          <view class='home_detail_map_tit'>
+            <text>*温馨提示：</text>
+            <p>（点击地图任一处即可开始导航~）</p>
+          </view>
+       </view>
+    </view>
+
+    <!-- 配套 -->
+    <view class='home_detail_tit'>
+       <view class='home_detail_ptss'>
+          <text>配套设施</text>
+          <p>舒适民宿，田园生活体验</p>
+       </view>
+       <view class='home_detail_contear_ptss'>
+          <view class='home_detail_ptss_ul'>
+          <block wx:if="{{facility3!=''}} && {{facility3!=undefined}}">
+            <block wx:for="{{facility3}}" wx:for-item="item" wx:for-index="findex">
+              <view class='home_detail_ptss_li'>
+            
+                  <image src='{{item.f_id}}'/>
+                  <text>{{item.f_name}}</text>
+              </view>
+            </block>
+          </block>
+         </view>
+       </view>
+    </view>
+
+    <!-- 预订须知 -->
+    <view class='home_detail_contear'>
+       <view class='home_detail_tit'>
+          <text class='home_detail_js'>房客须知</text>
+          <view class='clause_box'>
+              <b>房东对房客的要求</b>
+              <p>1、押金</p>
+              <p>2、预订前请告知几位入住，当天大概几点抵达</p>
+              <p>3、请善待防雷设施</p>
+          </view>
+          <view class='clause_box'>
+              <b>预订条款</b>
+              <p>订单确认后，在线支付订单金额的100%</p>
+              <p>额外的服务费用不包含在总房租内，由房东线下收取。</p>
+          </view>
+          <view class='clause_box'>
+              <b>退订说明</b>
+              <!-- <image src='../../resources/images/tdsm.png'/> -->
+              <ul> 
+                <li class="cur order1"> 
+                  <view class="order-tip">如取消订单，订金退还50%</view> 
+                  <view class="order-line">
+                  <p>入住前3天 14：00</p > 
+                  </view> 
+                </li> 
+                <li class="order1"> 
+                  <view class="order-tip">
+                  如取消订单，扣除头一天的定金
+                  </view> 
+                  <view class="order-line"> 
+                  <p>入住当天 14：00</p > 
+                  </view> 
+                </li> 
+                <li class="order1"> 
+                  <view class="order-tip">
+                  如提前退房，扣除未消费头一天定金
+                  </view> 
+                  <view class="order-line"> 
+                  <p>退房当天 12：00</p > 
+                  </view> 
+                </li> 
+              </ul>
+          </view>
+       </view>
+    </view>
+
+    <!-- 评论 -->
+    <view class='home_detail_contear'>
+       <view class='home_detail_tit'>
+          <text class='home_detail_js'>精彩评论</text>
+            <view class="comment-new">
+              <block wx:if="{{home_comment!='暂无评论~'&&home_comment!=undefined}}">
+                <block wx:for="{{home_comment}}" wx:for-item="comment" >
+                    <view class="wrap"> 
+                  <view class="public-comment-show clearfix"> 
+
+                    <view class="pcs-left"> 
+                    <a href="javascript:;"><image class="pcs-headimg" src="{{comment.avatarurl}}" /></a> 
+                    </view> 
+                    <view class="pcs-right"> 
+                    <view class="pcs-right-htop"> 
+                      <a class="anickname" >{{comment.username}}
+                      <block wx:if="{{comment.star==1}}">
+                  <image src="{{comment.star_pic}}" class="imgs2"></image></block>
+                      <block wx:elif="{{comment.star==2}}">
+                  <image src="{{comment.star_pic}}" style="width:30px;height:15px;"></image></block>
+                      <block wx:elif="{{comment.star==3}}">
+                  <image src="{{comment.star_pic}}" style="width:45px;height:15px;"></image></block>
+                      <block wx:elif="{{comment.star==4}}">
+                  <image src="{{comment.star_pic}}" style="width:60px;height:15px;"></image></block>
+                    <block wx:elif="{{comment.star==5}}">
+                  <image src="{{comment.star_pic}}" style="width:75px;height:15px;"></image></block>
+                    <block wx:else>
+                      </block>
+                      </a> 
+                      <span class="spandate">{{comment.pub_time}}</span> 
+                    </view> 
+                    <text class="pmainContent">{{comment.content}}</text> 
+
+                    <!-- <view class="pcs-right-coment"> 
+                    <view class="pcs-right-htop"> 
+                      <a class="anickname">徐正宗</a> 
+                          <span class="spandate">2017-07-25 10:23:13</span> 
+                      </view> 
+                      <p class="pmainContent"> <span class="coloraaa">@哎哟喂</span> 好的呢，感谢您的支持！ </p> 
+                    </view> -->
+
+                    <a class="reply" bindtap="reply" data-cid="{{comment.c_id}}">回复</a>
+                    <a class="reply" wx:if="{{comment.uid==comment.login_uid}}" bindtap="del" data-cid="{{comment.c_id}}">删除</a>
+                    <view wx:if="{{comment.c_id==reply_id}}" hidden="{{reply}}" class="reply_box">
+                    <form bindsubmit="commentForm" report-submit >	
+                      <textarea name="evaContent" maxlength="50" value="回复 {{comment.username}}:" class="textarea" /> 
+                      <input hidden="true" name="comment_pid" value="{{comment.c_id}}" />
+                      <input hidden="true" name="comment_user" value="回复 {{comment.username}}:" />
+                      <button class="save_btn" form-type="submit" hidden="{{flag2}}">发送</button>
+                      <button class="save_btn"  hidden="{{flag}}">发送中</button>
+                    </form>
+                    </view>
+                    </view>
+                  </view> 
+                  </view>
+                </block>
+                <a class="goods" bindtap="bindDownLoad">查看更多</a>
+                <form bindsubmit="commentForm2" report-submit >	
+        五星评级<radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}" wx:for-index="in">
+            <radio hidden="true" value="{{item.value}}" checked="{{item.checked}}"/>
+            <image src="{{item.name}}" class="imgs1" bindtap="score{{in}}"></image>
+          </label>
+        </radio-group>           
+                    <textarea  name="evaContent" maxlength="500" placeholder="" class="textarea" /> 
+                <input hidden="true" name="comment_pid" value="0" />
+                    <button class="save_btn" form-type="submit" hidden="{{flag2}}">发送</button>
+                      <button class="save_btn"  hidden="{{flag}}">发送中</button>
+                  </form>
+              </block>
+              <block wx:else>
+                <text class="comments">{{home_comment}}</text>
+                <!--这里单独写一个发表评论功能，与上面【回复、删除和展示评论区分开】-->
+              <form bindsubmit="commentForm3" report-submit >	
+        五星评级<radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}" wx:for-index="in">
+            <radio hidden="true" value="{{item.value}}" checked="{{item.checked}}"/>
+            <image src="{{item.name}}" class="imgs1" bindtap="score{{in}}"></image>
+          </label>
+        </radio-group>
+                    <textarea  name="evaContent" maxlength="500" placeholder="" class="textarea" /> 
+                <input hidden="true" name="comment_pid" value="0" />
+                    <button class="save_btn" form-type="submit" hidden="{{flag2}}">发送</button>
+                      <button class="save_btn"  hidden="{{flag}}">发送中</button>
+                  </form>
+              </block>
+        </view>
+       </view>
+    </view>
+
+    <!-- 提交 -->
+    <view class='goods-detail-foot'>
+        <view class='otreh-handle'>
+           <navigator url='../contact_kefu/contact_kefu' class='kefu navigator-hover border-r'>
+              <image src='../../resources/images/icon_lt.png' class='goods-detail-foot-img'/>
+              <p>聊天</p>
+           </navigator>
+           <navigator url='../contact_kefu/contact_kefu' class='kefu navigator-hover'>
+              <image src='../../resources/images/icon_dh.png' class='goods-detail-foot-img'/>
+              <p>电话</p>
+           </navigator>
+        </view>
+        <view class='buy-handle'>
+           <button class="add-cart" bindtap="bookTap">立即预定</button>
+        </view>
+    </view>
+
+    <!-- 分享 -->
+    <view class="{{showViews?'hide':'show'}}">
+        <view class='detail_share'>
+          <view class="mask" bindtap="onChangeShowStates"></view>
+          <view class='mask-block_share'>
+            <view class='mask-block_shareimg'>
+              <view class='vux-tab-item'>
+                  <button class='share_btn' open-type="share" bindtap='onShareAppMessage'>
+                    <image src='/pages/shop/component/image/weixin.png'/>
+                    <text>分享给朋友</text>
+                  </button>
+              </view>
+              <view class='vux-tab-item'>
+                  <navigator url='/pages/shop/component/details_share/details_share?id={{home_detail.s_id}}&type=home'>
+                    <image src='/pages/shop/component/image/tuijian.png'/>
+                    <text>分享图片</text>
+                  </navigator>
+              </view>
+            </view>
+            <button bindtap="onChangeShowStates" class='mask-block_share_btn'>关闭</button>
+          </view>
+        </view>
+    </view>

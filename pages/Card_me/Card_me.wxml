@@ -1,0 +1,17 @@
+<!--我的卡券-->
+<view class='content'>
+   <view class='post'>
+     <image src='../../resources/images/d_02.png' mode="widthFix" />
+     <text>我的卡券</text>
+   </view>
+
+   <block wx:for="{{cards}}" wx:for-index="index">
+   <view class='bgms tops' >
+      <view class='djjs'>
+         <image bindtap='onSwitch' src='../../resources/images/djq.png' mode="widthFix" />
+         <text class='relpos'>入住时间：{{item.applytime}}</text>
+      </view>
+   </view>
+  </block>
+
+</view>

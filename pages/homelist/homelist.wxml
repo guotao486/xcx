@@ -1,0 +1,36 @@
+<!-- 故事分类 -->
+  <view class='container'>
+    <view class='vux-tab'>
+      <view class="vux-tab-item {{num == 1 ?'vux-tab-selected':''}}" bindtap="swichNav" data-num="1">房东故事</view>
+      <view class="vux-tab-item {{num == 2 ?'vux-tab-selected':''}}" bindtap="swichNav" data-num="2">乡居体验</view>
+    </view>
+
+    <!--故事列表-->
+    <view class='storylist'>
+       <view class='storyUl' wx:for="{{list}}" wx:for-item="list" wx:for-index="index">
+  
+          <view class='storyLl'>
+             <navigator url='../story_detail/story_detail?art_id={{list.art_id}}'>
+                <image src='{{list.art_pic}}'/>
+                <view class='storyLl-tit'>
+                  <block wx:if="{{list.art_cat_id!='395'}}">
+                  <p class="storyLl-p">故事</p>
+                  </block>
+                  <block wx:else>
+                  <p class="storyLl-t">体验</p>
+                  </block>
+                  <text>{{list.art_title}}</text>
+                </view>
+                <view class='storyLl-img'>
+                   <image src='../../resources/images/icon_yd.png' class='storyLl-img1'/>
+                   <text>{{list.views}}</text>
+                   <image src='../../resources/images/icon_dzs.png' class='storyLl-img2'/>
+                   <text>{{list.praise}}</text>
+                </view>
+             </navigator>
+          </view>
+       </view> 
+    </view>
+
+
+  </view>

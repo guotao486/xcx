@@ -1,0 +1,11 @@
+<!--pages/shop/component/details_share/details_share.wxml-->
+<view class='conter'>
+   <view class='conterimg'>
+       <image src='{{imgUrl}}'/>
+       <button bindtap='downloadImg'>保存图片</button>
+   </view>
+</view>
+<view class='icon'>
+   <image src='../image/icon_lamp.png'/>
+   <text>保存至相册可以分享</text>
+</view>

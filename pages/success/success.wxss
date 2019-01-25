@@ -1,0 +1,26 @@
+.zfcgimg{
+  width:100px;
+  height:100px;
+  margin:100px auto 0 auto;
+  display:block;
+}
+.zfcgtext{
+  padding:20px 0 0 80px;
+  color:green;
+  font-weight:700;
+}
+.save_btn{
+    top:30px;
+    right:12px;
+    color:#fff;
+    width:52%;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    font-weight:700;
+    display:block;
+    padding:0;
+    background:#343434;
+    border-radius:0px;
+}
+

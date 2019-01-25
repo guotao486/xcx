@@ -1,0 +1,199 @@
+<import src="../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+<view class="container">
+   <view class='me_bag' style="background-image:url('http://www.xxiangfang.com/data/uploads/2017/08/07/wd_02.jpg');">
+     <image class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
+      <view class="nickname">
+        {{userInfo.nickName}}
+       
+        <!-- <view class='ph' bindtap="check_bind">
+            <image src='../../resources/images/ph.png' class='me_ph'/>
+            <text>绑定手机号 ></text>
+        </view> -->
+        
+      </view>
+    </view>
+    <view class='me_list'>
+      <navigator url='../homeorder_list/homeorder_list?order_type=home'>
+          <view class='me_lists'>
+            <image src='../../resources/images/icon1.png'/>
+            <text class='me_text'>我的订单</text>
+              <text class='me_texts'> ＞</text>
+          </view>
+      </navigator>
+       <view class='list_flex'>
+          <navigator url='../homeorder_list/homeorder_list?order_type=home&selected=1' class='list_flex-nav'>
+            <view class="list_flex-item">
+              <image src='../../resources/images/icon2.png'/>
+              <text>全部</text>
+            </view>
+          </navigator>
+          <navigator url='../homeorder_list/homeorder_list?order_type=home&selected=2' class='list_flex-nav'>
+            <view class="list_flex-item">
+              <image src='../../resources/images/icon3.png'/>
+              <text>待付款</text>
+            </view>
+          </navigator>
+          <navigator url='../homeorder_list/homeorder_list?order_type=home&selected=3' class='list_flex-nav'>
+            <view class="list_flex-item">
+              <image src='../../resources/images/icon4.png'/>
+              <text>已完成</text>
+            </view>
+          </navigator>
+          <navigator url='../homeorder_list/homeorder_list?order_type=home&selected=4' class='list_flex-nav'>
+            <view class="list_flex-item">
+              <image src='../../resources/images/icon5.png'/>
+              <text>待评价</text>
+            </view>
+          </navigator>
+       </view>
+    </view>
+
+    <view class='core-entry'>
+        <navigator url='../shop/component/user/user'>
+          <view class='core-entry-list'>
+              <image src='../../resources/images/icon1.png'/>
+              <text class='core-entry-text'>文创订单</text>
+              <text class='core-entry-right'> ＞ </text>
+          </view>
+        </navigator>
+        <navigator url='../collection/collection'>
+          <view class='core-entry-list'>
+              <image src='../../resources/images/icon6.png'/>
+              <text class='core-entry-text'>我的收藏</text>
+              <text class='core-entry-right'> ＞ </text>
+          </view>
+        </navigator>
+        <navigator url='../order_list/order_list?order_type=activity'>
+          <view class='core-entry-list'>
+              <image src='../../resources/images/icon7.png'/>
+              <text class='core-entry-text'>我的活动</text>
+              <image src='../../resources/images/new.png' class='new'/>
+              <text class='core-entry-right'> ＞ </text>
+          </view>
+        </navigator>
+        <navigator url='../Card_index/Card_index'>
+          <view class='core-entry-list'>
+              <image src='../../resources/images/icon8.png'/>
+              <text class='core-entry-text'>卡券</text>
+              <text class='core-entry-right'> ＞ </text>
+          </view>
+        </navigator>
+        <navigator url='../contact_kefu/contact_kefu'>
+            <view class='core-entry-list'>
+                <image src='../../resources/images/icon9.png'/>
+                <text class='core-entry-text'>联系客服</text>
+                <text class='core-entry-right'> ＞ </text>
+            </view>
+        </navigator>
+        <block wx:if="{{user_type==4}}">
+          <navigator url="../teambuy/teambuy">
+            <view class='core-entry-list'>
+                <image src='../../resources/images/icon10.png'/>
+                <text class='core-entry-text'>今日特惠</text>
+                <text class='core-entry-right'> ＞ </text>
+            </view>
+          </navigator>
+        </block>
+        <block wx:if="{{user_type!=4}}">
+        
+         <!-- <navigator url="../storylist/storylist" open-type="switchTab"> -->
+         <navigator url="/pages/article_list/homelist/homelist" >
+            <view class='core-entry-list'>
+                <image src='../../resources/images/fh.png'/>
+                <text class='core-entry-text'>更多精彩</text>
+                <text class='core-entry-right'> ＞ </text>
+            </view>
+          </navigator>
+        </block>
+        <view class='core-entry-list' bindtap="check_bind">
+              <image src='../../resources/images/icon11.png'/>
+              <text class='core-entry-text'>绑定手机号</text>
+              <text class='core-entry-right'> ＞ </text>
+        </view>
+    </view>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <view class="header" style="background-image:url('http://www.xxiangfang.com/data/uploads/2017/08/07/wd_02.jpg');height:380rpx">
+		 <image class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"/>
+		 <view class="nickname">{{userInfo.nickName}}</view>
+      <navigator url="../homeorder_list/homeorder_list?order_type=home">
+        <view class="myitemvip">
+          <image src="../../resources/images/eye.png" class="banners" />
+          <p class="texts">我的订单</p>
+      </view>
+      </navigator>
+        <block wx:if="{{user_type==4}}">
+              <navigator url="../teambuy/teambuy">
+                <view class="myitemvip">
+                  <image src="http://www.xxiangfang.com/data/uploads/2017/08/07/vip.png" class="banners" />
+                  <p class="texts">今日特惠</p>
+                </view>
+              </navigator>
+        </block>
+        <block wx:if="{{user_type!=4}}">
+        <navigator url="../storylist/storylist" open-type="switchTab">
+                <view class="myitemvip">
+                  <image src="../../resources/images/fh.png" class="banners" />
+                  <p class="texts">更多精彩</p>
+                </view>
+              </navigator>
+        </block>
+	  </view>
+
+    <view class="section">
+      <navigator url="../collection/collection">
+        <view class="icon">
+          <image src="../../resources/images/draft.png" class="iconimage"></image>
+          <text class="icontext">我的收藏</text>
+        </view>
+      </navigator>
+      <navigator url="../order_list/order_list?order_type=activity">
+        <view class="icon1">
+          <image src="../../resources/images/star.png" class="iconimage"></image>
+          <text class="icontext">我的活动</text>
+        </view>
+      </navigator>
+      <navigator url='../Card_index/Card_index'>
+      <view class="icon2">
+        <image src="../../resources/images/ticket.png" class="iconimage"></image>
+        <text class="icontext">卡券</text>
+      </view>
+      </navigator>
+      <navigator url="../shop/component/user/user">
+        <view class="icon3">
+          <image src="../../resources/images/expect.png" class="iconimage"></image>
+          <text class="icontext">文创订单</text>
+        </view>
+      </navigator>
+      <view class="icon4" bindtap="check_bind">
+        <image src="../../resources/images/recent.png" class="iconimage"></image>
+        <text class="icontext">绑定手机</text>
+      </view>
+       <navigator url="../contact_kefu/contact_kefu">
+        <view class="icon5">
+          <image src="../../resources/images/cus.png" class="iconimage"></image>
+          <text class="icontext">联系客服</text>
+        </view>
+      </navigator> 
+      <navigator url="../PersonalHelp/PersonalHelp">
+        <view class="icon5">
+          <image src="../../resources/images/love.png" class="iconimage"></image>
+          <text class="icontext">我要捐赠</text>
+        </view>
+      </navigator>
+    </view> -->
+</view>
+
+<view class="tabbar-border"></view>

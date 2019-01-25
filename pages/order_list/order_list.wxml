@@ -1,0 +1,85 @@
+<!--pages/order_list/order_list.wxml-->
+<view class="account_index my_project account_mod"> 
+<block wx:if="{{orderList!='暂无数据'}}">
+   <ul> 
+<block wx:for="{{orderList}}" wx:for-item="orderList">
+    <li> 
+     <view class="webkit-box"> 
+      <view class="pic_show mr5"> 
+ <navigator url="../activity_detail/activity_detail?id={{orderList.a_id}}">
+       <image src="{{orderList.pic_url}}"/>
+ </navigator>
+      </view> 
+      <view class="details"> 
+ <navigator url="../activity_detail/activity_detail?id={{orderList.a_id}}">
+       <text class="info_name">{{orderList.act_name}}</text> 
+ 
+       <view class="info_all"> 
+        <view class="info_group"> 
+         <label class="label_l">金额：</label>
+         <span class="f_money">{{orderList.act_amount}}</span> 
+        </view> 
+        <view class="info_group"> 
+         <label class="label_l">状态：</label> 
+         <span class="label_r"> {{orderList.j_status}} </span> 
+        </view> 
+        <view class="info_group"> 
+         <label class="label_l">支付方式:</label> 
+         <span class="label_r"> {{orderList.enlist_type}} </span> 
+        </view> 
+       </view> 
+</navigator>
+      </view> 
+<block wx:if="{{orderList.enlist_type=='全款'}}">
+  <block wx:if="{{orderList.j_status=='支付成功'}}">
+        <view class="operating f_r webkit-box" style="line-height:30px;"> 
+        <navigator url="../order_listdetail/order_listdetail?jid={{orderList.jid}}">
+          <a href="" class="pay theme_color">查看详情</a>
+        </navigator>
+        </view>
+  </block>
+  <block wx:else>
+        <view bindtap="pay_again" data-name="{{orderList.jid}}" data-fee="{{orderList.act_fee}}" data-mobile="{{orderList.p_phone}}" data-act="{{orderList.act_name}}" class="operating f_r webkit-box" style="line-height:30px;"> 
+            <a href="" class="pay bg_red">继续支付</a> 
+        </view>
+  </block>
+</block>
+<block wx:else>
+  <block wx:if="{{orderList.j_status=='支付成功'}}">
+    <block wx:if="{{orderList.surplus==0}}">
+        <view class="operating f_r webkit-box" style="line-height:30px;"> 
+        <navigator url="../order_listdetail/order_listdetail?jid={{orderList.jid}}">
+          <a href="" class="pay" style="background:green">支付余款</a>
+        </navigator>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="operating f_r webkit-box" style="line-height:30px;"> 
+        <navigator url="../order_listdetail/order_listdetail?jid={{orderList.jid}}">
+          <a href="" class="pay theme_color">查看详情</a>
+        </navigator>
+        </view>
+    </block>
+  </block>
+  <block wx:else>
+        <view bindtap="pay_again" data-name="{{orderList.jid}}" data-fee="{{orderList.act_fee}}" data-mobile="{{orderList.p_phone}}" data-act="{{orderList.act_name}}" class="operating f_r webkit-box" style="line-height:30px;"> 
+            <a href="" class="pay bg_red">继续支付</a> 
+        </view>
+  </block>
+</block>
+
+
+     </view>
+     <view class="blank5"></view> 
+     </li> 
+</block>
+
+   </ul> 
+</block>
+<block wx:if="{{orderList=='暂无数据'}}">
+  <view class="notify">
+    <image src="../../resources/images/hd_03.png" class="imgsss"/>
+    {{orderList}}
+  </view>
+</block>
+  </view>

@@ -1,0 +1,251 @@
+<import src="../../modal/modal.wxml" />
+<template is="modal" data="{{showModal}}"></template>
+<scroll-view  scroll-y="true" bindscroll="scrollTop" scroll-into-view="{{toView}}" scroll-with-animation="true" class='contents'>
+  <view class="container-fluidshow"> 
+    <scroll-view  scroll-y="true" >
+      <swiper  autoplay="auto" interval="3000" duration="500"  bindchange="swiperChange">
+          <block wx:for="{{pics}}" wx:for-item="item" wx:for-index="index">
+              <swiper-item>
+                  <view class="ar_coverpath">
+                    <image src="{{item}}" mode="aspectFill"/>
+                </view>
+              </swiper-item>
+          </block>
+      </swiper>
+      <!--  几张图  -->
+        <view class="dots">  
+          {{swiperIndex}}/{{pics.length}} 
+        </view> 
+        <!--  房间收藏  -->
+        <text class="provider_item_share" bindtap='onChangeShowStates' style="background-image:url('http://www.xxiangfang.com/data/uploads/2017/07/27/share.png')"></text>
+    </scroll-view>
+    <view class='village_detail_var'>
+      <image src='http://www.xxiangfang.com/data/uploads/2018/02/08/146885a7bdfba58f10.jpg'/>
+      <view class='village_detail_var_tit'>
+          <text>{{villages.vil_name}}</text>
+          <p>{{villages.nickname}}</p>
+      </view>
+    </view>
+  </view> 
+
+<!-- 定位 -->
+<view class='village_detai_conter'>
+   <view class='village_detai_dw'>
+      <image src='../../resources/images/icon_dd2.png'/>
+      <span>{{villages.address}}</span>
+   </view>
+</view>
+
+  <!-- 村落介绍 -->
+  <view class='village_detai_conter' id="inToView1">
+    <view class='village_detai_js'>
+        <text class='village_detai_js_tit'>村落介绍</text>
+    </view>
+    <view class='village_detai_js_tdets'>
+        {{villages.description}}
+        <block wx:for="{{pics}}" wx:for-item="item" wx:for-index="index">
+          <image src='{{item}}'/>
+        </block>
+    </view>
+    
+  </view>
+
+  <!-- 文创产品 -->
+  <block wx:if="{{vil_goods!='' && vil_act !=undefined}}">
+    <view class='village_detai_conter' id="inToView2">
+      <view class='village_detai_js'>
+          <text class='village_detai_js_tit'>文创产品</text>
+      </view>
+      <view class='village_detai_js_wc'>
+      <block wx:for="{{vil_goods}}" wx:for-item="item" wx:for-index="goods_index"> 
+        <navigator url='../shop/component/details/details?gid={{item.id}}'>
+            <image src='{{item.img}}' />
+            <text>{{item.name}}</text>
+            <p>{{item.description}}</p>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <!-- 活动体验 -->
+  <block wx:if="{{vil_act!='' && vil_act !=undefined}}">
+    <view class='village_detai_conter' id="inToView3">
+        <view class='village_detai_js'>
+          <text class='village_detai_js_tit'>活动体验</text>
+        </view>
+        <view class='village_detai_js_wc'>
+        <block wx:for="{{vil_act}}" wx:for-index="act_index"> 
+        <navigator url='../activity_detail/activity_detail?id={{vil_act[act_index].a_id}}'>
+            <image src='{{vil_act[act_index].pic_url}}' />
+            <text>{{vil_act[act_index].act_name}}</text>
+          </navigator>
+        </block>
+        </view>
+    </view>
+  </block>
+
+  <!-- 村落民宿 -->
+  <block wx:if="{{vil_room!='' && vil_room !=undefined}}">
+    <view class='village_detai_conter' id="inToView4">
+      <view class='village_detai_js'>
+          <text class='village_detai_js_tit'>村落民宿</text>
+      </view>
+      <view class='village_detai_js_wc'>
+      <block wx:for="{{vil_room}}" wx:for-index="room_index"> 
+          <navigator url='../home_detail/home_detail?home_id={{vil_room[room_index].s_id}}'>
+            <image src='{{vil_room[room_index].pic_url}}' />
+            <text>{{vil_room[room_index].brand}}-{{vil_room[room_index].s_title}}</text>
+            <p>{{vil_room[room_index].s_desc}}</p>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <!-- 地图 -->
+  <view class='village_detai_conter' id="inToView5">
+    <view class='village_detai_js'>
+        <text class='village_detai_js_tit'>路线导航</text>
+    </view>
+    <view class='village_detai_js_wc'>
+        <pre>
+          <view  class="item-desch100" hidden="{{show}}">
+            温馨提示：
+            <b class="itemred">(点击地图村落图标，可查看相关活动和客房服务)</b>
+          </view>
+          <view hidden="{{hide}}">当前客房：{{village_home_count}}  (间)<p class='click1' bindtap="switch_tab">查看详情</p></view>
+          <view hidden="{{hide}}">当前活动：<block wx:if="{{v_act_list[0]['act_name']!='暂无活动,敬请期待~'}}">
+          <block wx:for="{{v_act_list}}" wx:for-index="index"> 
+            <i class="p1">{{item.act_name}}</i> 
+            <navigator url="../../pages/activity_detail/activity_detail?id={{item.a_id}}">
+            <p class='click'>查看详情</p>
+            </navigator>
+          </block>
+          </block>
+          <block wx:else>
+          <view class="goods">暂无活动,敬请期待~</view>
+          </block>
+          </view>
+          <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" polyline="{{polyline}}" circles="{{circles}}" show-location="true" bindmarkertap="marker_tap" scale="9" class='map' />
+          <view class="b_1">您目前位于 : {{city}} - {{district}}</view>
+          <view class="b_2">距离目的地约 : {{distance}}</view>
+        </pre> 
+      </view>
+  </view>
+
+  <!-- 精彩评论 -->
+  <view class='village_detai_conter' id="inToView6">
+    <view class='village_detai_js'>
+        <text class='village_detai_js_tit'>精彩评论</text>
+    </view>
+    <view class='village_detai_js_wc'>
+          <view class="comment-new">
+            <block wx:if="{{village_comment!='暂无评论~'&&village_comment!=undefined}}">
+              <block wx:for="{{village_comment}}" wx:for-item="comment" >
+                <view class="wrap"> 
+                <view class="public-comment-show clearfix"> 
+                  <view class="pcs-left"> 
+                    <image class="pcs-headimg" src="{{comment.avatarurl}}" />
+                  </view> 
+                  <view class="pcs-right"> 
+                  <view class="pcs-right-htop"> 
+                    <a class="anickname" >{{comment.username}}</a> 
+                    <span class="spandate">{{comment.pub_time}}</span> 
+                  </view> 
+                  <text class="pmainContent">{{comment.content}}</text> 
+                  <a class="reply" bindtap="reply" data-cid="{{comment.c_id}}">回复</a>
+                  <a class="reply" wx:if="{{comment.uid==comment.login_uid}}" bindtap="del" data-cid="{{comment.c_id}}">删除</a>
+                  <view wx:if="{{comment.c_id==reply_id}}" hidden="{{reply}}" class="reply_box">
+                  <form bindsubmit="commentForm" report-submit >	
+                    <textarea name="evaContent" maxlength="50" value="回复 {{comment.username}}:" class="textarea" /> 
+                    <input hidden="true" name="comment_pid" value="{{comment.c_id}}" />
+                    <input hidden="true" name="comment_user" value="回复 {{comment.username}}:" />
+                    <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+                    <button class="save_btn"  hidden="{{fla}}">发送中</button>
+                  </form>
+                  </view>
+                  </view>
+                </view> 
+                </view>
+              </block>
+              <a class="goods" bindtap="bindDownLoad">查看更多</a>
+              <form bindsubmit="commentForm2" report-submit >	
+                  <textarea  name="evaContent" maxlength="500" placeholder="发表评论（50字以内）" class="textarea" /> 
+              <input hidden="true" name="comment_pid" value="0" />
+                  <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+                    <button class="save_btn"  hidden="{{fla}}">发送中</button>
+                </form>
+            </block>
+            <block wx:else>
+              <p class="goods">{{village_comment}}</p>
+              <!--这里单独写一个发表评论功能，与上面【回复、删除和展示评论区分开】-->
+            <form bindsubmit="commentForm3" report-submit >	
+                  <textarea  name="evaContent" maxlength="500" placeholder="发表评论（50字以内）" class="textarea" /> 
+              <input hidden="true" name="comment_pid" value="0" />
+                  <button class="save_btn" form-type="submit" hidden="{{fla2}}">发送</button>
+                    <button class="save_btn"  hidden="{{fla}}">发送中</button>
+                </form>
+            </block>
+          </view> 
+    </view>
+  </view>
+
+
+  <!-- 周边风光 -->
+  <block wx:if="{{vil_scenery!='' && vil_scenery !=undefined}}">
+      <view class='village_detai_conter' id="inToView7">
+        <view class='village_detai_js'>
+            <text class='village_detai_js_tit'>周边风光</text>
+        </view>
+        <view class='village_detai_js_wc'>
+        <block wx:for="{{vil_scenery}}" wx:for-index="scenery_index"> 
+          <navigator url='../story_detail/story_detail?art_id={{vil_scenery[scenery_index].art_id}}'>
+              <image src='{{vil_scenery[scenery_index].art_pic}}' />
+              <text>{{vil_scenery[scenery_index].art_title}}</text>
+            </navigator>
+          </block>
+        </view>
+      </view>
+  </block>
+
+
+  <!-- 分享 -->
+  <view class="{{showViews?'hide':'show'}}">
+      <view class='detail_share'>
+        <view class="mask" bindtap="onChangeShowStates"></view>
+        <view class='mask-block_share'>
+          <view class='mask-block_shareimg'>
+            <view class='vux-tab-item'>
+                <button class='share_btn' open-type="share" bindtap='onShareAppMessage'>
+                  <image src='/pages/shop/component/image/weixin.png'/>
+                  <text>分享给朋友</text>
+                </button>
+            </view>
+            <view class='vux-tab-item'>
+                <navigator url='/pages/shop/component/details_share/details_share?id={{villages.v_id}}&type=villages'>
+                  <image src='/pages/shop/component/image/tuijian.png'/>
+                  <text>分享图片</text>
+                </navigator>
+            </view>
+          </view>
+          <button bindtap="onChangeShowStates" class='mask-block_share_btn'>关闭</button>
+        </view>
+      </view>
+  </view>
+
+
+  <!-- tab置顶 -->
+  <view class='{{vux}}'>
+    <view class='nav'>
+        <block wx:for="{{orientationList}}" wx:for-index="indexToView"> 
+          <block wx:if="{{item}}"> 
+          <view class="{{(item.id)==click_id?'nav-box2':'nav-box'}}"> 
+            <span data-id="{{item.id}}" bindtap="scrollToViewFn">{{item.region}}</span> 
+          </view>
+          </block>
+        </block>
+    </view>
+  </view>
+
+</scroll-view>
